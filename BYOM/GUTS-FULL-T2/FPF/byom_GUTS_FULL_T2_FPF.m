@@ -268,23 +268,23 @@ plot_tktd(par_out,opt_tktd,[]); % leaving opt_conf empty suppresses all CIs for 
 % plot_tktd(par_out,opt_tktd,opt_conf); 
 
 
-%% Calculate LCx versus time
-% Here, the LCx (by default the LC50) is calculated at several time points.
-% LCx values are also printed on screen. If a sample from parameter space
-% is available (e.g., from the slice sampler or the likelihood region), it
-% can be used to calculate confidence bounds. 
+% %% Calculate LCx versus time
+% % Here, the LCx (by default the LC50) is calculated at several time points.
+% % LCx values are also printed on screen. If a sample from parameter space
+% % is available (e.g., from the slice sampler or the likelihood region), it
+% % can be used to calculate confidence bounds. 
+% % 
+% % Options for LCx (with confidence bounds) can be set using opt_ecx (see
+% % prelim_checks). Note that opt_conf.type=-1 skips CIs.
 % 
-% Options for LCx (with confidence bounds) can be set using opt_ecx (see
-% prelim_checks). Note that opt_conf.type=-1 skips CIs.
-
-opt_conf.type    = 2; % make intervals from 1) slice sampler, 2)likelihood region, 3) parspace explorer
-opt_conf.lim_set = 2; % for lik-region sample: use limited set of n_lim points (1) or outer hull (2) to create CIs
-opt_lcx_lim.Feff = 0.50; % effect level (>0 en <1), x/100 in LCx
-
-% This is the general method as the fast methods won't work for the full
-% model (or at least: won't be faster than the general method).
-opt_ecx.Feff      = [0.50]; % effect levels (>0 en <1), x/100 in ECx
-opt_ecx.notitle   = 1; % set to 1 to suppress titles above ECx plots
-Tend = [2:0.2:3 3.5 4:8 10 15 22 28 40]; % times at which to calculate LCx, relative to control
-
-calc_ecx(par_out,Tend,opt_ecx,opt_conf); % general method for ECx values
+% opt_conf.type    = 2; % make intervals from 1) slice sampler, 2)likelihood region, 3) parspace explorer
+% opt_conf.lim_set = 2; % for lik-region sample: use limited set of n_lim points (1) or outer hull (2) to create CIs
+% opt_lcx_lim.Feff = 0.50; % effect level (>0 en <1), x/100 in LCx
+% 
+% % This is the general method as the fast methods won't work for the full
+% % model (or at least: won't be faster than the general method).
+% opt_ecx.Feff      = [0.50]; % effect levels (>0 en <1), x/100 in ECx
+% opt_ecx.notitle   = 1; % set to 1 to suppress titles above ECx plots
+% Tend = [2:0.2:3 3.5 4:8 10 15 22 28 40]; % times at which to calculate LCx, relative to control
+% 
+% calc_ecx(par_out,Tend,opt_ecx,opt_conf); % general method for ECx values
