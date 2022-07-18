@@ -63,7 +63,8 @@ else
     Cw = 0;
 end
 
-Ci = X(1); % internal concentration
+Ci = X(1);     % state 1: internal concentration
+Cm = X(2);     % state 2: metabolite concentration
 
 %% Unpack parameters
 % The parameters enter this function in the structure _par_. The names in
@@ -75,6 +76,8 @@ Ci = X(1); % internal concentration
 ku   = par.ku(1);     % uptake rate constant, L * kg-1 d-1
 ke   = par.ke(1);     % elimination rate constant, d-1
 % Piw  = par.ku(1)/ke;  % bioconcentration factor, L/kg
+km   = par.km(1);     % formation rate of the metabolite
+kem  = par.kem(1);    % elimination rate of the metabolite
 
 % % Optionally, include the threshold concentration as a global (see script)
 % Ct   = glo.Ct;      % threshold external concentration that stops degradation, mg/L
@@ -88,5 +91,6 @@ ke   = par.ke(1);     % elimination rate constant, d-1
 
 %dCi = ke * (Piw * Cw - Ci); % first order bioconcentration
 dCi = ku * Cw - ke * Ci ; % AMD: alternative writing of quation of first order bioconcentration
+dCm = km * Ci - kem * Cm;   % first-order metabolism
 
-dX = [dCi]; % collect derivatives in vector dX
+dX = [dCi; dCm]; % collect derivatives in vector dX
