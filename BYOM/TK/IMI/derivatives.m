@@ -90,7 +90,7 @@ kem  = par.kem(1);    % elimination rate of the metabolite
 % $$ \frac{d}{dt}C_i=k_e(P_{iw}C_w-C_i) $$
 
 %dCi = ke * (Piw * Cw - Ci); % first order bioconcentration
-dCi = ku * Cw - ke * Ci ; % AMD: alternative writing of quation of first order bioconcentration
+dCi = (ku * Cw - ke * Ci) - km * Ci; % AMD: alternative writing of quation of first order bioconcentration
 dCm = km * Ci - kem * Cm;   % first-order metabolism
 
 dX = [dCi; dCm]; % collect derivatives in vector dX
