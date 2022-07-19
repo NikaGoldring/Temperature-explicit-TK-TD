@@ -41,8 +41,7 @@ function dX = derivatives(t,X,par,c,glo)
 %% Unpack states
 % The state variables enter this function in the vector _X_. Here, we give
 % them a more handy name.
-
-global glo  
+ 
 
 if c == 17.71 % ADJUST!
     dep_time = glo.dep_time(1); 

@@ -24,11 +24,13 @@
 % * Back to index <walkthrough_byom.html>
 
 %% Start
+function [Xout,TE,Xout2,zvd] = call_deri(t,par,X0v,glo)
 
-function [Xout, TE] = call_deri(t,par,X0v)
+% These outputs need to be defined, even if they are not used
+Xout2    = []; % additional uni-variate output, predefine as empty
+zvd      = []; % additional zero-variate output, predefine as empty
 
-global glo   % allow for global parameters in structure glo
-global zvd   % global structure for zero-variate data
+%Note that zvd is now a part of input structure glo. See example directory of BYOM for information on how to use zero-variate data.
 
 %% Initial settings
 % This part extracts optional settings for the ODE solver that can be set
@@ -78,21 +80,21 @@ if useode == 1 % use the ODE solver to calculate the solution
     if isempty(options.Events) % if no events function is specified ...
         switch stiff
             case 0
-                [~,Xout] = ode45(@derivatives,t,X0,options,par,c);
+                [~,Xout] = ode45(@derivatives,t,X0,options,par,c,glo);
             case 1
-                [~,Xout] = ode113(@derivatives,t,X0,options,par,c);
+                [~,Xout] = ode113(@derivatives,t,X0,options,par,c,glo);
             case 2
-                [~,Xout] = ode15s(@derivatives,t,X0,options,par,c);
+                [~,Xout] = ode15s(@derivatives,t,X0,options,par,c,glo);
         end
     else % with an events functions ... additional output arguments for events:
         % TE catches the time of an event, YE the states at the event, and IE the number of the event
         switch stiff
             case 0
-                [~,Xout,TE,YE,IE] = ode45(@derivatives,t,X0,options,par,c);
+                [~,Xout,TE,YE,IE] = ode45(@derivatives,t,X0,options,par,c,glo);
             case 1
-                [~,Xout,TE,YE,IE] = ode113(@derivatives,t,X0,options,par,c);
+                [~,Xout,TE,YE,IE] = ode113(@derivatives,t,X0,options,par,c,glo);
             case 2
-                [~,Xout,TE,YE,IE] = ode15s(@derivatives,t,X0,options,par,c);
+                [~,Xout,TE,YE,IE] = ode15s(@derivatives,t,X0,options,par,c,glo);
         end
     end
 else % alternatively, use an explicit function provided in simplefun!
@@ -111,7 +113,7 @@ end
 % Note that the eventsfun has the same inputs, in the same sequence, as
 % <derivatives.html derivatives.m>.
 
-function [value,isterminal,direction] = eventsfun(t,X,par,c)
+function [value,isterminal,direction] = eventsfun(t,X,par,c,glo)
 
 nevents = 3;         % number of events that we try to catch
 
