@@ -9,9 +9,12 @@
 % restarted.
 %
 % * Author: Tjalling Jager 
-% * Date: February 2017
+% * Date: May 2020
 % * Web support: <http://www.debtox.info/byom.html>
-% * Back to index <walkthrough_byom.html>
+
+%  Copyright (c) 2012-2020, Tjalling Jager, all rights reserved.
+%  This source code is licensed under the MIT-style license found in the
+%  LICENSE.txt file in the root directory of BYOM. 
 
 %% Start
 
@@ -35,7 +38,27 @@ if isempty(findstr(['BYOM',filesep,'engine'],path)) % BYOM/engine is not already
             error('Pathdefine.m cannot find the directory BYOM. Make sure your script is in a sub-directory of BYOM.')
         end
     end
-    addpath([pwd,filesep,'engine'],'-begin'); % add engine to the path
+    addpath([curdir,filesep,'engine'],'-begin'); % add engine to the path
+    eval(['cd(',char(39),rem,char(39),')']); % go back to the original location
+    % This has to be done in this rather complicated manner as windows file locations may include spaces, 
+    % which cd interprets in the wrong way!
+end
+
+% For now do the same thing again for the parspace directory (this can be
+% done smarter, but I would like to avoid problems with older path_define
+% versions and BYOM versions without parspace in the engine)
+if isempty(findstr(['BYOM',filesep,'parspace'],path)) % BYOM/parspace is not already in the path ... add it!
+    while strcmp(curdir(end-3:end),'BYOM')==0 % as long as we are not yet in the BYOM folder ...
+        cd ..; % go one directory up
+        curdir = pwd; % current directory as string
+        if length(curdir) < 4 % if dir name is very small, we are probably in the root
+            eval(['cd(',char(39),rem,char(39),')']); % go back to the original location
+            error('Pathdefine.m cannot find the directory BYOM. Make sure your script is in a sub-directory of BYOM.')
+        end
+    end
+    if exist([curdir,filesep,'engine',filesep,'parspace']) == 7 % the directory parspace exists
+        addpath([curdir,filesep,'engine',filesep,'parspace'],'-begin'); % add parspace to the path
+    end
     eval(['cd(',char(39),rem,char(39),')']); % go back to the original location
     % This has to be done in this rather complicated manner as windows file locations may include spaces, 
     % which cd interprets in the wrong way!
