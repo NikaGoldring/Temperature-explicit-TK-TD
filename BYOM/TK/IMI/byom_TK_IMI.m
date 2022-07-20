@@ -132,20 +132,50 @@ prelim_checks % script to perform some preliminary checks and set things up
 % modify options after this call, if needed.
 
 %% Calculations and plotting
-% Here, the function is called that will do the calculation and the plotting.
+% Here, the functions are called that will do the calculation and the
+% plotting. Note that calc_plot can provide all of the plotting information
+% as output, so you can also make your own customised plots. This section,
+% by default, makes a multiplot with all state variables (each in its own
+% panel of the multiplot). When the model is fitted to data, output is
+% provided on the screen (and added to the log-file results.out). The
+% zero-variate data point is also plotted with its prediction (although the
+% legend obscures it here).
+%
 % Options for the plotting can be set using opt_plot (see prelim_checks.m).
-% Options for the optimsation routine can be set using opt_optim. Options
-% for the ODE solver are part of the global glo. 
+% Options for the optimisation routine can be set using opt_optim. Options
+% for the ODE solver are part of the global glo.
+%
+% You can turn on the events function there too, to smoothly catch the
+% discontinuity in the model. For the demo, the iterations were turned off
+% (opt_optim.it = 0).
 
-opt_optim.it = 0; % show iterations of the simplex optimisation (1, default) or not (0)
-opt_plot.bw  = 1; % plot in black and white
-opt_plot.cn  = 1; % if set to 1, connect model line to points (only for bw=1)
+glo.eventson   = 1; % events function on (1) or off (0)
+glo.useode     = 1; % calculate model using ODE solver (1) or analytical solution (0)
+opt_optim.it   = 0; % show iterations of the optimisation (1, default) or not (0)
+opt_plot.annot = 2; % extra subplot in multiplot for fits: 1) box with parameter estimates, 2) overall legend
+opt_plot.bw    = 1; % if set to 1, plots in black and white with different plot symbols
 
-glo.useode = 1; % 1 for using ODE solver, 0 for useing the analytical solution in simplefun.m
+% glo.diary = 'test_results.out'; % use a different name for the diary
 
 % optimise and plot (fitted parameters in par_out)
 par_out = calc_optim(par,opt_optim); % start the optimisation
-calc_and_plot(par_out,opt_plot); % calculate model lines and plot them
+calc_and_plot(par_out,opt_plot);     % calculate model lines and plot them
+
+% save_plot(gcf,'fit_example',[],3) % save active figure as PDF (see save_plot for more options)
+
+% return % stop here, and run analyses below manually later
+
+%% Local sensitivity analysis
+% Local sensitivity analysis of the model. All model parameters are
+% increased one-by-one by a small percentage. The sensitivity score is
+% by default scaled (dX/X p/dp) or alternatively absolute (dX p/dp).
+%
+% Options for the sensitivity can be set using opt_sense (see
+% prelim_checks.m).
+ 
+% % UNCOMMENT LINE(S) TO CALCULATE
+% opt_sens.state = 2; % vector with state variables for the sensitivity analysis (0 does all, if sens>0)
+% calc_localsens(par_out,opt_sens)
 
 %% Profiling the likelihood
 % By profiling you make robust confidence intervals for one or more of your
@@ -226,3 +256,12 @@ opt_conf.sens    = 0; % type of analysis 0) no sensitivities 1) corr. with state
 
 out_conf = calc_conf(par_out,opt_conf);   % calculate confidence intervals on model curves
 calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to plot fits with CIs
+
+% % Here, we can also use the new plotting function for TKTD models. Even
+% % though this is not a TKTD model, we can still plot the internal
+% % concentration, with the treatments in separate panels.
+% glo.locC       = [1 2]; % tell plot_tktd that our first and second state variable are internal concentrations to plot
+% opt_tktd.repls = 0;     % plot individual replicates (1) or means (0)
+% opt_tktd.min   = 0;     % set to 1 to show a dotted line for the control (lowest) treatment
+% 
+% plot_tktd(par_out,opt_tktd,opt_conf);
