@@ -17,3 +17,85 @@ ku          1.487 (fit: 1, initial: 1.37)
 T_A         316.2 (fit: 1, initial: 7547) 
 =================================================================================
 Time required: 6.9 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_T_FPF 
+   Analysis date : 20-Jul-2022 (18:33) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 206 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 209.63 (AIC=425.27). 
+=================================================================================
+ke         0.1634 (fit: 1, initial: 0.1743) 
+ku          1.446 (fit: 1, initial: 1.487) 
+T_A       0.01019 (fit: 1, initial: 316.2) 
+=================================================================================
+Time required: 3.1 secs
+ 
+Calculating profiles and sample from confidence region ... please be patient.
+[Warning: Better optimum was found, initiating new optimisation] 
+Goodness-of-fit measures for each state and each data set (R-square)
+Based on the individual replicates, accounting for transformations, and including t=0
+state 1.   0.66   0.86   0.28
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_T_FPF 
+   Analysis date : 20-Jul-2022 (18:34) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 55 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 209.54 (AIC=425.08). 
+=================================================================================
+ke         0.1585 (fit: 1, initial: 0.1584) 
+ku          1.434 (fit: 1, initial: 1.432) 
+T_A       0.01022 (fit: 1, initial: 0.01011) 
+=================================================================================
+Time required: 9.8 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_T_FPF 
+   Analysis date : 20-Jul-2022 (18:34) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 60 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 209.29 (AIC=424.58). 
+=================================================================================
+ke         0.1440 (fit: 1, initial: 0.144) 
+ku          1.396 (fit: 1, initial: 1.394) 
+T_A       0.01113 (fit: 1, initial: 0.0106) 
+=================================================================================
+Time required: 13.7 secs
+ 
+The profiles found a better optimum: 209.291 (best was 209.634). 
+   Re-fitting was done, so the final results are for the better optimum.
+   It is a good idea to also make new plots for the fit.
+Parameter values for new optimum (formatted for copy-paste) 
+=================================================================================
+par.ke     = [     0.144  1       0.01        100 1]; 
+par.ku     = [    1.3964  1       0.01        100 1]; 
+par.T_A    = [  0.011131  1       0.01      1e+06 1]; 
+=================================================================================
+  
+95% confidence interval(s) from the profile(s)
+=================================================================================
+ke         interval:     0.1025 -  0.2177 
+ku         interval:      1.277 -  1.580 
+T_A        interval:   <0.01000 -  638.2 
+=================================================================================
+ 
+Time required: 1 min, 42.9 secs
