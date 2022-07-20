@@ -236,11 +236,11 @@ opt_conf.sens    = 0; % type of analysis 0) no sensitivities 1) corr. with state
 out_conf = calc_conf(par_out,opt_conf);   % calculate confidence intervals on model curves
 calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to plot fits with CIs
 
-% Here, we can also use the new plotting function for TKTD models. Even
-% though this is not a TKTD model, we can still plot the internal
-% concentration, with the treatments in separate panels.
-glo.locC       = [1 2]; % tell plot_tktd that our first and second state variable are internal concentrations to plot
-opt_tktd.repls = 1 ;     % plot individual replicates (1) or means (0)
-opt_tktd.min   = 0;     % set to 1 to show a dotted line for the control (lowest) treatment
-
-plot_tktd(par_out,opt_tktd,opt_conf);
+% % Here, we can also use the new plotting function for TKTD models. Even
+% % though this is not a TKTD model, we can still plot the internal
+% % concentration, with the treatments in separate panels.
+% glo.locC       = [1 2]; % tell plot_tktd that our first and second state variable are internal concentrations to plot
+% opt_tktd.repls = 1 ;     % plot individual replicates (1) or means (0)
+% opt_tktd.min   = 0;     % set to 1 to show a dotted line for the control (lowest) treatment
+% 
+% plot_tktd(par_out,opt_tktd,opt_conf);
