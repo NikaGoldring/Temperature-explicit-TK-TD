@@ -22,6 +22,7 @@
 %
 % Model extended to use datasets at different temperatures (see derivatives).
 % Model extended to account for biotransformation
+% Model changed to be used in BYOMv6.2
 %
 %% Initial things
 % Make sure that this script is in a directory somewhere *below* the BYOM
