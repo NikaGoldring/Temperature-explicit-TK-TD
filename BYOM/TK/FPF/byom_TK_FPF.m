@@ -19,9 +19,10 @@
 
 %% MDA Changes: 
 % Date: 10.04.2021
-%
 % Model extended to use datasets at different temperatures (see derivatives).
 % 
+% Date: 20.07.2022
+% Model changed to be analysed in BYOMv.6.2
 %
 %% Initial things
 % Make sure that this script is in a directory somewhere *below* the BYOM
@@ -90,8 +91,8 @@ glo.dep_time = [2.03	1.92	1.97]; % depuration times in days
 % Model parameters are part of a 'structure' for easy reference. 
 
 % syntax: par.name = [startvalue fit(0/1) minval maxval optional:log/normal scale (0/1)];
-par.ke    = [0.3882    1 0.01 100 1];  % elimination rate constant, d-1
-par.ku    = [1.895  1 0.01 100 1];  % uptake rate constant, L/kg/d
+par.ke    = [0.14507   1 0.01 100 1];  % elimination rate constant, d-1
+par.ku    = [1.3961  1 0.01 100 1];  % uptake rate constant, L/kg/d
 
 
 %% Time vector and labels for plots
@@ -129,8 +130,8 @@ prelim_checks % script to perform some preliminary checks and set things up
 
 glo.eventson   = 1; % events function on (1) or off (0)
 glo.useode     = 1; % calculate model using ODE solver (1) or analytical solution (0)
-opt_optim.it   = 1; % show iterations of the optimisation (1, default) or not (0)
-opt_plot.annot = 1; % extra subplot in multiplot for fits: 1) box with parameter estimates, 2) overall legend
+opt_optim.it   = 0; % show iterations of the optimisation (1, default) or not (0)
+opt_plot.annot = 2; % extra subplot in multiplot for fits: 1) box with parameter estimates, 2) overall legend
 opt_plot.bw    = 1; % if set to 1, plots in black and white with different plot symbols
 
 % glo.diary = 'test_results.out'; % use a different name for the diary
@@ -239,7 +240,7 @@ calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to p
 % though this is not a TKTD model, we can still plot the internal
 % concentration, with the treatments in separate panels.
 glo.locC       = [1 2]; % tell plot_tktd that our first and second state variable are internal concentrations to plot
-opt_tktd.repls = 0;     % plot individual replicates (1) or means (0)
+opt_tktd.repls = 1 ;     % plot individual replicates (1) or means (0)
 opt_tktd.min   = 0;     % set to 1 to show a dotted line for the control (lowest) treatment
 
 plot_tktd(par_out,opt_tktd,opt_conf);

@@ -1,0 +1,129 @@
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK1_FPF 
+   Analysis date : 20-Jul-2022 (17:50) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 71 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 218.74 (AIC=441.47). 
+=================================================================================
+ke         0.3882 (fit: 1, initial: 0.3882) 
+ku          1.895 (fit: 1, initial: 1.895) 
+=================================================================================
+Time required: 1.4 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK1_FPF 
+   Analysis date : 20-Jul-2022 (17:51) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 71 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 218.74 (AIC=441.47). 
+=================================================================================
+ke         0.3882 (fit: 1, initial: 0.3882) 
+ku          1.895 (fit: 1, initial: 1.895) 
+=================================================================================
+Time required: 1.2 secs
+ 
+Calculating profiles and sample from confidence region ... please be patient.
+[Warning: Better optimum was found, initiating new optimisation] 
+<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\calc_optim.m',52,1)">52  </a>if isempty(pfit) || fit == 0 % if there is nothing to be fitted anyway ...
+if system_dependent('IsDebugMode')==1, dbquit; end
+byom_TK_FPF
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_FPF 
+   Analysis date : 20-Jul-2022 (17:57) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 71 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 218.74 (AIC=441.47). 
+=================================================================================
+ke         0.3882 (fit: 1, initial: 0.3882) 
+ku          1.895 (fit: 1, initial: 1.895) 
+=================================================================================
+Time required: 1.4 secs
+ 
+Calculating profiles and sample from confidence region ... please be patient.
+[Warning: Better optimum was found, initiating new optimisation] 
+Goodness-of-fit measures for each state and each data set (R-square)
+Based on the individual replicates, accounting for transformations, and including t=0
+state 1.   0.66   0.86   0.25
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_FPF 
+   Analysis date : 20-Jul-2022 (17:58) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 70 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 209.29 (AIC=422.58). 
+=================================================================================
+ke         0.1451 (fit: 1, initial: 0.3564) 
+ku          1.396 (fit: 1, initial: 1.828) 
+=================================================================================
+Time required: 11.1 secs
+ 
+The profiles found a better optimum: 209.288 (best was 218.736). 
+   Re-fitting was done, so the final results are for the better optimum.
+   It is a good idea to also make new plots for the fit.
+Parameter values for new optimum (formatted for copy-paste) 
+=================================================================================
+par.ke     = [   0.14507  1       0.01        100 1]; 
+par.ku     = [    1.3961  1       0.01        100 1]; 
+=================================================================================
+  
+95% confidence interval(s) from the profile(s)
+=================================================================================
+ke         interval:     0.1026 -  0.2168 
+ku         interval:      1.277 -  1.579 
+=================================================================================
+ 
+Time required: 43.5 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_FPF 
+   Analysis date : 20-Jul-2022 (18:08) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 49 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 209.29 (AIC=422.58). 
+=================================================================================
+ke         0.1450 (fit: 1, initial: 0.1451) 
+ku          1.396 (fit: 1, initial: 1.396) 
+=================================================================================
+Time required: 0.8 secs
+ 
+Calculating profiles and sample from confidence region ... please be patient.
+  
+95% confidence interval(s) from the profile(s)
+=================================================================================
+ke         interval:     0.1026 -  0.2168 
+ku         interval:      1.277 -  1.579 
+=================================================================================
+ 
+Time required: 35.1 secs
