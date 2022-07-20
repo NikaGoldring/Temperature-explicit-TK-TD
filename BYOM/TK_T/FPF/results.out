@@ -1,0 +1,19 @@
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_T_FPF 
+   Analysis date : 20-Jul-2022 (18:28) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     No convergence, optimisation stopped on maximum number of iterations
+     Total 367 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 210.35 (AIC=426.69). 
+=================================================================================
+ke         0.1743 (fit: 1, initial: 0.1681) 
+ku          1.487 (fit: 1, initial: 1.37) 
+T_A         316.2 (fit: 1, initial: 7547) 
+=================================================================================
+Time required: 6.9 secs

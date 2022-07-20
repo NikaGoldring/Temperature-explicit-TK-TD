@@ -30,7 +30,6 @@
 clear, clear global % clear the workspace and globals
 global DATA W X0mat % make the data set and initial states global variables 
 global glo          % allow for global parameters in structure glo
-global pri zvd      % global structures for optional priors and zero-variate data
 diary off           % turn of the diary function (if it is accidentaly on)
 set(0,'DefaultFigureWindowStyle','docked'); % collect all figure into one window with tab controls
 %set(0,'DefaultFigureWindowStyle','normal'); % separate figure windows
@@ -95,9 +94,9 @@ glo.ref_temp = 293.15; % reference temperature in Kelvin (20 degrees celsius)
 % Model parameters are part of a 'structure' for easy reference. 
 
 % syntax: par.name = [startvalue fit(0/1) minval maxval optional:log/normal scale (0/1)];
-par.ke    = [0.1681    1 0.01 100 1];  % elimination rate constant, d-1
-par.ku    = [1.370     1 0.01 100 1];  % uptake rate constant, L/kg/d
-par.T_A   = [7547  1 0.01 1e6 1];  % Arrhenius temperature, Kelvin 
+par.ke    = [0.1743   1 0.01 100 1];  % elimination rate constant, d-1
+par.ku    = [1.487     1 0.01 100 1];  % uptake rate constant, L/kg/d
+par.T_A   = [316.2  1 0.01 1e6 1];  % Arrhenius temperature, Kelvin 
 
 %% Time vector and labels for plots
 % Specify what to plot. If time vector glo.t is not specified, a default is
@@ -115,39 +114,82 @@ prelim_checks % script to perform some preliminary checks and set things up
 % modify options after this call, if needed.
 
 %% Calculations and plotting
-% Here, the function is called that will do the calculation and the plotting.
+% Here, the functions are called that will do the calculation and the
+% plotting. Note that calc_plot can provide all of the plotting information
+% as output, so you can also make your own customised plots. This section,
+% by default, makes a multiplot with all state variables (each in its own
+% panel of the multiplot). When the model is fitted to data, output is
+% provided on the screen (and added to the log-file results.out). The
+% zero-variate data point is also plotted with its prediction (although the
+% legend obscures it here).
+%
 % Options for the plotting can be set using opt_plot (see prelim_checks.m).
-% Options for the optimsation routine can be set using opt_optim. Options
-% for the ODE solver are part of the global glo. 
+% Options for the optimisation routine can be set using opt_optim. Options
+% for the ODE solver are part of the global glo.
+%
+% You can turn on the events function there too, to smoothly catch the
+% discontinuity in the model. For the demo, the iterations were turned off
+% (opt_optim.it = 0).
 
-opt_optim.it = 0; % show iterations of the simplex optimisation (1, default) or not (0)
-opt_plot.bw  = 1; % plot in black and white
-opt_plot.cn  = 1; % if set to 1, connect model line to points (only for bw=1)
+glo.eventson   = 1; % events function on (1) or off (0)
+glo.useode     = 1; % calculate model using ODE solver (1) or analytical solution (0)
+opt_optim.it   = 0; % show iterations of the optimisation (1, default) or not (0)
+opt_plot.annot = 2; % extra subplot in multiplot for fits: 1) box with parameter estimates, 2) overall legend
+opt_plot.bw    = 1; % if set to 1, plots in black and white with different plot symbols
 
-glo.useode = 1; % 1 for using ODE solver, 0 for useing the analytical solution in simplefun.m
+% glo.diary = 'test_results.out'; % use a different name for the diary
 
 % optimise and plot (fitted parameters in par_out)
 par_out = calc_optim(par,opt_optim); % start the optimisation
-calc_and_plot(par_out,opt_plot); % calculate model lines and plot them
+calc_and_plot(par_out,opt_plot);     % calculate model lines and plot them
+
+% save_plot(gcf,'fit_example',[],3) % save active figure as PDF (see save_plot for more options)
+
+% return % stop here, and run analyses below manually later
+
+%% Local sensitivity analysis
+% Local sensitivity analysis of the model. All model parameters are
+% increased one-by-one by a small percentage. The sensitivity score is
+% by default scaled (dX/X p/dp) or alternatively absolute (dX p/dp).
+%
+% Options for the sensitivity can be set using opt_sense (see
+% prelim_checks.m).
+ 
+% % UNCOMMENT LINE(S) TO CALCULATE
+% opt_sens.state = 2; % vector with state variables for the sensitivity analysis (0 does all, if sens>0)
+% calc_localsens(par_out,opt_sens)
 
 %% Profiling the likelihood
 % By profiling you make robust confidence intervals for one or more of your
-% parameters. Use the name of the parameter as it occurs in your parameter
-% structure _par_ above. You do not need to run the entire script before
-% you can make a profile. 
-% 
-% Options for the profiling can be set using opt_prof (see prelim_checks)
+% parameters. Use the names of the parameters as they occurs in your
+% parameter structure _par_ above. This can be a single string (e.g.,
+% 'kd'), a cell array of strings (e.g., {'kd','ke'}), or 'all' to profile
+% all fitted parameters. This example produces a profile for each parameter
+% and provides the 95% confidence interval (on screen and indicated by the
+% horizontal broken line in the plot).
+%
+% Notes: profiling for complex models is a slow process, so grab a coffee!
+% If the profile finds a better solution, it breaks the analysis (as long
+% as you keep the default opt_prof.brkprof=1) and displays the parameters
+% for the new optimum on screen (and in results.out). For the NON-parallel
+% version of calc_proflik, the new optimum is also immediately saves to the
+% log file profiles_newopt.out. You can break of the analysis by pressing
+% ctrl-c anytime, and use the values from the log file to restart (copy the
+% better values into your _par_ structure). For parallel processing, saving
+% would need more thought.
+%
+% Options for profiling can be set using opt_prof (see prelim_checks.m).
 
-% Automatically calculate profiles for all parameters, and redo
-% optimisation when a better value is found.
-opt_prof.subopt = -1; % number of sub-optimisations to perform to increase robustness
-% set to -1 to compare no sub-optims with 10 sub-optims.
-opt_prof.detail = 1; % detailed (1) or a coarse (2) calculation
+opt_prof.detail   = 1; % detailed (1) or a coarse (2) calculation
+opt_prof.subopt   = 0; % number of sub-optimisations to perform to increase robustness
+opt_prof.brkprof  = 2; % when a better optimum is located, stop (1) or automatically refit (2)
 
-par_out = auto_profiles(par_out,opt_prof,opt_optim); 
-% Here, the analysis showed that sub-optimisations are not needed
-
-% print_par(par_out) % print best fit parameters in formatted manner
+% % UNCOMMENT LINE(S) TO CALCULATE
+% par_better = calc_proflik(par_out,'all',opt_prof,opt_optim);  % calculate a profile
+% if ~isempty(par_better)                 % if the profiling found a better optimum ...
+%     print_par(par_better) % display on screen in formatted manner, so it can be copied into the code
+%     calc_and_plot(par_better,opt_plot); % calculate model lines and plot them
+% end
 
 %% Likelihood region
 % Another way to make intervals on model predictions is to use a sample of
@@ -157,21 +199,26 @@ par_out = auto_profiles(par_out,opt_prof,opt_optim);
 % shooting, keeping only those parameter combinations that are not rejected
 % at the 95% level in a lik.-rat. test. The inner rim will be used for CIs
 % on forward predictions.
-% 
+%
 % Options for the likelihood region can be set using opt_likreg (see
-% prelim_checks.m). 
+% prelim_checks.m). For the profiling part, use the options in opt_prof.
 
-opt_likreg.detail   = 2; % detailed (1) or a coarse (2) calculation
-opt_likreg.subopt   = 10; % number of sub-optimisations to perform to increase robustness
-opt_likreg.skipprof = 0; % skip profiling (and use profile from a saved mat file)
-par_better = calc_likregion(par_out,500,opt_likreg); % second argument is target for number of samples in inner region (-1 to re-use saved sample from previous runs)
+opt_prof.detail  = 1; % detailed (1) or a coarse (2) calculation
+opt_prof.subopt  = 0; % number of sub-optimisations to perform to increase robustness
+opt_prof.re_fit  = 1; % set to 1 to automatically refit when a new optimum is found
+opt_likreg.skipprof = 0; % skip profiling step; use boundaries from saved likreg set (1) or profiling (2)
+
+par_better = calc_likregion(par_out,500,opt_likreg,opt_prof,opt_optim); 
+% Second entry is the number of accepted parameter sets to aim for. Use -1
+% here to use a saved set.
 
 if isstruct(par_better) % if the profiling found a better optimum ...
     print_par(par_better) % display on screen in formatted manner, so it can be copied into the code
+    calc_and_plot(par_better,opt_plot); % calculate model lines and plot them
     return % stop here, and don't go into plotting with CIs
 end
 
-% Plot results with confidence intervals
+%% Plot results with confidence intervals
 % The following code can be used to make a standard plot (the same as for
 % the fits), but with confidence intervals. Options for confidence bounds
 % on model curves can be set using opt_conf (see prelim_checks).
@@ -191,3 +238,12 @@ opt_conf.sens    = 0; % type of analysis 0) no sensitivities 1) corr. with state
 
 out_conf = calc_conf(par_out,opt_conf);   % calculate confidence intervals on model curves
 calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to plot fits with CIs
+
+% % Here, we can also use the new plotting function for TKTD models. Even
+% % though this is not a TKTD model, we can still plot the internal
+% % concentration, with the treatments in separate panels.
+% glo.locC       = [1 2]; % tell plot_tktd that our first and second state variable are internal concentrations to plot
+% opt_tktd.repls = 0;     % plot individual replicates (1) or means (0)
+% opt_tktd.min   = 0;     % set to 1 to show a dotted line for the control (lowest) treatment
+% 
+% plot_tktd(par_out,opt_tktd,opt_conf);

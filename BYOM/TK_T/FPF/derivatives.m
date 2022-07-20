@@ -42,8 +42,6 @@ function dX = derivatives(t,X,par,c,glo)
 % The state variables enter this function in the vector _X_. Here, we give
 % them a more handy name.
 
-global glo  
-
 ref_temp = glo.ref_temp;
 dep_time = glo.dep_time;
 exp_temp = glo.exp_temp;
@@ -85,7 +83,7 @@ ke   = par.ke(1);     % elimination rate constant, d-1
 T_A  = par.T_A(1);    % Arrhenius temperature, Kelvin
 
 % Correct rates for temperature 
-%ku_T = ku * exp( (T_A / ref_temp) - (T_A / exp_temp(1)) );
+ku_T = ku * exp( (T_A / ref_temp) - (T_A / exp_temp(1)) );
 ke_T = ke * exp( (T_A / ref_temp) - (T_A / exp_temp(1)) );
 
 
@@ -100,6 +98,6 @@ ke_T = ke * exp( (T_A / ref_temp) - (T_A / exp_temp(1)) );
 % $$ \frac{d}{dt}C_i=k_e(P_{iw}C_w-C_i) $$
 
 %dCi = ke * (Piw * Cw - Ci); % first order bioconcentration
-dCi = ku* Cw - ke_T * Ci ; % AMD: alternative writing of quation of first order bioconcentration
+dCi = ku_T* Cw - ke_T * Ci ; % AMD: alternative writing of quation of first order bioconcentration
 
 dX = [dCi]; % collect derivatives in vector dX
