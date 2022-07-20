@@ -42,8 +42,6 @@ function dX = derivatives(t,X,par,c,glo)
 % The state variables enter this function in the vector _X_. Here, we give
 % them a more handy name.
 
-global glo  
-
 dep_time = glo.dep_time;
 		
 if c == 17.80 % ADJUST!
