@@ -30,7 +30,6 @@
 clear, clear global % clear the workspace and globals
 global DATA W X0mat % make the data set and initial states global variables
 global glo          % allow for global parameters in structure glo
-global pri zvd      % global structures for optional priors and zero-variate data
 diary off           % turn of the diary function (if it is accidentaly on)
 set(0,'DefaultFigureWindowStyle','docked'); % collect all figure into one window with tab controls
 % set(0,'DefaultFigureWindowStyle','normal'); % separate figure windows
