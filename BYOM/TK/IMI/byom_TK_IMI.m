@@ -110,10 +110,32 @@ glo.dep_time = [2.01	1.95	1.99]; % depuration times in days
 % Model parameters are part of a 'structure' for easy reference. 
 
 % syntax: par.name = [startvalue fit(0/1) minval maxval optional:log/normal scale (0/1)];
-par.ke    = [0.09172    1 0.01 100 1];  % elimination rate constant, d-1
-par.ku    = [3.041  1 0.01 100 1];  % uptake rate constant, L/kg/d
-par.km    = [0.04913   1 1e-4 100 1];  % formation rate of the metabolite
-par.kem   = [0.8589   1 1e-4 100 1];  % elimination rate of the metabolite
+par.ke    = [0.10885    1 1e-6 100 1];  % elimination rate constant, d-1
+par.ku    = [3.027  1 0.01 100 1];  % uptake rate constant, L/kg/d
+par.km    = [0.026955   1 1e-4 100 1];  % formation rate of the metabolite
+par.kem   = [0.76055    1 1e-4 100 1];  % elimination rate of the metabolite
+
+%% Zero-variate data and priors for Bayesian analyses
+% Optionally, zero-variate data can be included. The corresponding model
+% value needs to be calculated in call_deri.m, so modify that file too! You
+% can make up your own parameter names in the structure _zvd_. Optionally,
+% prior distributions can be specified for parameters, see the file
+% calc_prior.m for the definition of the distributions. You must use the
+% exact same names for the prior parameters as used in the _par_ structure.
+% If you do not specify _zvd_ and/or _pri_ in your scripts, these options
+% are simply not used in the analysis.
+% 
+% Note: the priors are also used for 'frequentist' analysis. They are
+% treated as independent additional likelihood functions.
+ 
+zvd.BCF = [20 0.5]; % example zero-variate data point for bioconcentration factor, L/kg, with normal s.d.
+ 
+% % First element in pri is the choice of distribution.
+% pri.Piw   = [2 116 121 118]; % triangular with min, max and center
+% pri.ke    = [3 0.2 0.1];     % normal with mean and sd
+% % If no prior is defined, the min-max bounds will define a uniform one.
+% % Note that the prior is always defined on normal scale, also when the
+% % parameter will be fitted on log scale.
 
 %% Time vector and labels for plots
 % Specify what to plot. If time vector glo.t is not specified, a default is
@@ -199,7 +221,7 @@ calc_and_plot(par_out,opt_plot);     % calculate model lines and plot them
 % Options for profiling can be set using opt_prof (see prelim_checks.m).
 
 opt_prof.detail   = 1; % detailed (1) or a coarse (2) calculation
-opt_prof.subopt   = 10; % number of sub-optimisations to perform to increase robustness
+opt_prof.subopt   = 0; % number of sub-optimisations to perform to increase robustness
 opt_prof.brkprof  = 2; % when a better optimum is located, stop (1) or automatically refit (2)
 
 % % UNCOMMENT LINE(S) TO CALCULATE
@@ -222,7 +244,7 @@ opt_prof.brkprof  = 2; % when a better optimum is located, stop (1) or automatic
 % prelim_checks.m). For the profiling part, use the options in opt_prof.
 
 opt_prof.detail  = 1; % detailed (1) or a coarse (2) calculation
-opt_prof.subopt  = 10; % number of sub-optimisations to perform to increase robustness
+opt_prof.subopt  = 0; % number of sub-optimisations to perform to increase robustness
 opt_prof.re_fit  = 1; % set to 1 to automatically refit when a new optimum is found
 opt_likreg.skipprof = 0; % skip profiling step; use boundaries from saved likreg set (1) or profiling (2)
 
