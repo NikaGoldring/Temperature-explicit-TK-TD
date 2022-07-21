@@ -49,9 +49,16 @@ stiff    = glo.stiff; % set to 1 to use a stiff solver instead of the standard o
 % Unpack the vector X0v, which is X0mat for one scenario
 X0 = X0v(2:end); % these are the intitial states for a scenario
 
-% if needed, calculate model values for zero-variate data from parameter set
-if ~isempty(zvd)
-    zvd.ku(3) = par.Piw(1) * par.ke(1); % add model prediction as third value
+% Note: if these options are not used, these variables must be defined as
+% empty as they are outputs of this function.
+
+% if needed, calculate model values for zero-variate data from parameter
+% set; these lines can be removed if no zero-variate data are used
+if ~isempty(glo.zvd) % if there are zero-variate data defined (see byom_bioconc_extra)
+    zvd       = glo.zvd; % copy zero-variate data structure to zvd
+    zvd.BCF(3) = par.ku(1) / par.ke(1); % add model prediction as third value in zvd
+else % if there are no zero-variate data defined (as in byom_bioconc_start)
+    zvd       = []; % additional zero-variate output, output defined as empty matrix
 end
 
 %% Calculations

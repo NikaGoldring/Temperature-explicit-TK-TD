@@ -94,6 +94,27 @@ glo.dep_time = [2.03	1.92	1.97]; % depuration times in days
 par.ke    = [0.14507   1 0.01 100 1];  % elimination rate constant, d-1
 par.ku    = [1.3961  1 0.01 100 1];  % uptake rate constant, L/kg/d
 
+%% Zero-variate data and priors for Bayesian analyses
+% Optionally, zero-variate data can be included. The corresponding model
+% value needs to be calculated in call_deri.m, so modify that file too! You
+% can make up your own parameter names in the structure _zvd_. Optionally,
+% prior distributions can be specified for parameters, see the file
+% calc_prior.m for the definition of the distributions. You must use the
+% exact same names for the prior parameters as used in the _par_ structure.
+% If you do not specify _zvd_ and/or _pri_ in your scripts, these options
+% are simply not used in the analysis.
+% 
+% Note: the priors are also used for 'frequentist' analysis. They are
+% treated as independent additional likelihood functions.
+ 
+zvd.BCF = [10 0.5]; % example zero-variate data point for bioconcentration factor, L/kg, with normal s.d.
+ 
+% % First element in pri is the choice of distribution.
+% pri.Piw   = [2 116 121 118]; % triangular with min, max and center
+% pri.ke    = [3 0.2 0.1];     % normal with mean and sd
+% % If no prior is defined, the min-max bounds will define a uniform one.
+% % Note that the prior is always defined on normal scale, also when the
+% % parameter will be fitted on log scale.
 
 %% Time vector and labels for plots
 % Specify what to plot. If time vector glo.t is not specified, a default is
