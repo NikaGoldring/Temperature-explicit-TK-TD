@@ -66,6 +66,7 @@ else
 end
 
 Ci = X(1); % internal concentration
+Cm = X(2);     % state 2: metabolite concentration
 
 %% Unpack parameters
 % The parameters enter this function in the structure _par_. The names in
@@ -77,12 +78,15 @@ Ci = X(1); % internal concentration
 ku   = par.ku(1);     % uptake rate constant, L * kg-1 d-1
 ke   = par.ke(1);     % elimination rate constant, d-1
 % Piw  = par.ku(1)/ke;  % bioconcentration factor, L/kg
+km   = par.km(1);     % formation rate of the metabolite
+kem  = par.kem(1);    % elimination rate of the metabolite
 T_A  = par.T_A(1);    % Arrhenius temperature, Kelvin
 
 % Correct rates for temperature 
-ku_T = ku * exp( (T_A / ref_temp) - (T_A / exp_temp(1)) );
-ke_T = ke * exp( (T_A / ref_temp) - (T_A / exp_temp(1)) );
-
+ku_T  = ku * exp( (T_A / ref_temp) - (T_A / exp_temp(1)) );
+ke_T  = ke * exp( (T_A / ref_temp) - (T_A / exp_temp(1)) );
+km_T  = km * exp( (T_A / ref_temp) - (T_A / exp_temp(1)) );
+kem_T = kem * exp( (T_A / ref_temp) - (T_A / exp_temp(1)) );
 
 % % Optionally, include the threshold concentration as a global (see script)
 % Ct   = glo.Ct;      % threshold external concentration that stops degradation, mg/L
@@ -95,6 +99,7 @@ ke_T = ke * exp( (T_A / ref_temp) - (T_A / exp_temp(1)) );
 % $$ \frac{d}{dt}C_i=k_e(P_{iw}C_w-C_i) $$
 
 %dCi = ke * (Piw * Cw - Ci); % first order bioconcentration
-dCi = ku_T * Cw - ke_T * Ci ; % AMD: alternative writing of quation of first order bioconcentration
+dCi = (ku_T * Cw - ke_T * Ci)- km_T - Ci ; % AMD: alternative writing of quation of first order bioconcentration
+dCm = km_T * Ci - kem_T * Cm;   % first-order metabolism
 
-dX = [dCi]; % collect derivatives in vector dX
+dX = [dCi; dCm]; % collect derivatives in vector dX

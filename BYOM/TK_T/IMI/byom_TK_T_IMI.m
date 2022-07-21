@@ -57,8 +57,10 @@ DATA{1,1} = [1	 17.71	17.71	17.71
            3.00	 54.03	43.32	59.00
            3.99	 46.85	70.16	50.28
            5.02	 57.44	50.88	62.34];
+%DATA{1,2} = [];
 
-% 18 degrees dataset       
+% 18 degrees dataset   
+% parent compound
 DATA{2,1} = [1	 17.58	17.58	17.58
            0.27	 12.96	15.35	22.09
            0.99	 51.81	47.85	63.17
@@ -66,15 +68,32 @@ DATA{2,1} = [1	 17.58	17.58	17.58
            2.88	 75.66	72.46	82.08
            3.87	 76.14	69.32	71.35
            4.99	 62.34	62.90	67.42];
-
+% metabolite IMI-ole
+DATA{2,2} = [1	    17.58	17.58	17.58
+            0.27 	nan     nan     nan
+            0.99	nan	    nan     nan
+            1.95    nan     nan     nan 
+            2.88	2.62	1.71	2.38
+            3.87	1.87	2.14	2.13
+            4.99	2.78	1.67	2.98];
+        
 % 24 degrees dataset
+% parent compound
 DATA{3,1} = [1	 17.57	17.57	17.57
            0.24	 16.95	23.40	23.83
            1.01	 69.93	74.25	64.62
            1.99	 93.05	95.68  112.35
            2.94	 68.56	92.55	68.71
            3.93	 69.47	65.31	67.15
-           5.08	 55.05	65.18	57.53];       
+           5.08	 55.05	65.18	57.53];      
+% metabolite IMI-ole
+DATA{3,2} = [ 1	    17.57	17.57	17.57
+            0.24	nan     nan     nan		
+            1.01	nan     nan     nan		
+            1.99	2.96	3.29	3.59
+            2.94	3.04	6.06	5.03
+            3.93	4.40	4.28	4.01
+            5.08	3.01	4.59	4.21 ];   
 
 %% Initial values for the state variables
 % Initial states, scenarios in columns, states in rows. First row are the
@@ -95,6 +114,8 @@ glo.ref_temp = 293.15; % reference temperature in Kelvin (20 degrees celsius)
 % syntax: par.name = [startvalue fit(0/1) minval maxval optional:log/normal scale (0/1)];
 par.ke    = [0.1524    1 0.01 100 1];  % elimination rate constant, d-1
 par.ku    = [3.213     1 0.01 100 1];  % uptake rate constant, L/kg/d
+par.km    = [0.04913   1 1e-4 100 1];  % formation rate of the metabolite
+par.kem   = [0.8589   1 1e-4 100 1];  % elimination rate of the metabolite
 par.T_A   = [2818  1 0.01 1e6 1];  % Arrhenius temperature, Kelvin
 
 %% Time vector and labels for plots
@@ -103,6 +124,7 @@ par.T_A   = [2818  1 0.01 1e6 1];  % Arrhenius temperature, Kelvin
 
 % specify the y-axis labels for each state variable
 glo.ylab{1} = ['internal concentration (',char(181),'g/kg)'];
+glo.ylab{2} = ['internal metabolite concentration (',char(181),'g/kg)'];
 % specify the x-axis label (same for all states)
 glo.xlab    = 'time (day)';
 glo.leglab1 = ''; % legend label before the 'scenario' number
