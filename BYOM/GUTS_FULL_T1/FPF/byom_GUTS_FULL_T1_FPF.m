@@ -346,3 +346,27 @@ opt_tktd.repls = 0;     % plot individual replicates (1) or means (0)
 opt_tktd.min   = 1;     % set to 1 to show a dotted line for the control (lowest) treatment
 
 plot_tktd(par_out,opt_tktd,opt_conf);
+
+% %% Calculate LCx versus time
+% % Here, the LCx (by default the LC50) is calculated at several time points.
+% % LCx values are also printed on screen. If a sample from parameter space
+% % is available (e.g., from the slice sampler or the likelihood region), it
+% % can be used to calculate confidence bounds. 
+% % 
+% % Options for LCx (with confidence bounds) can be set using opt_ecx (see
+% % prelim_checks). Note that opt_conf.type=-1 skips CIs.
+% 
+% opt_conf.type    = 2; % make intervals from 1) slice sampler, 2)likelihood region, 3) parspace explorer
+% opt_conf.lim_set = 2; % for lik-region sample: use limited set of n_lim points (1) or outer hull (2) to create CIs
+% 
+% opt_ecx.id_sel    = [0   0 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+% % opt_ecx.id_sel    = [6   6 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+% % opt_ecx.id_sel    = [12 12 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+% 
+% % This is the general method as the fast methods won't work for the full
+% % model (or at least: won't be faster than the general method).
+% opt_ecx.Feff      = [0.50]; % effect levels (>0 en <1), x/100 in ECx
+% opt_ecx.notitle   = 1; % set to 1 to suppress titles above ECx plots
+% Tend = [1:28]; % times at which to calculate LCx, relative to control
+% 
+% calc_ecx([],Tend,opt_ecx,opt_conf); % general method for ECx values
