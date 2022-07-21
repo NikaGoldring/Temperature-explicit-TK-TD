@@ -42,8 +42,6 @@ function dX = derivatives(t,X,par,c,glo)
 % The state variables enter this function in the vector _X_. Here, we give
 % them a more handy name.
 
-global glo  
-
 ref_temp = glo.ref_temp;
 if c == 17.71 % ADJUST!
     exp_temp = glo.exp_temp(1);
