@@ -32,10 +32,11 @@
 
 %% Start
 
-function [Xout,TE] = call_deri(t,par,X0v)
+function [Xout,TE,Xout2,zvd] = call_deri(t,par,X0v,glo)
 
-global glo   % allow for global parameters in structure glo
-global zvd   % global structure for optional zero-variate data
+% These outputs need to be defined, even if they are not used
+Xout2    = []; % additional uni-variate output, predefine as empty
+zvd      = []; % additional zero-variate output, predefine as empty
 
 %% Initial settings
 % This part extracts optional settings for the ODE solver that can be set
