@@ -99,7 +99,7 @@ kem_T = kem * exp( (T_A / ref_temp) - (T_A / exp_temp(1)) );
 % $$ \frac{d}{dt}C_i=k_e(P_{iw}C_w-C_i) $$
 
 %dCi = ke * (Piw * Cw - Ci); % first order bioconcentration
-dCi = (ku_T * Cw - ke_T * Ci)- km_T - Ci ; % AMD: alternative writing of quation of first order bioconcentration
+dCi = (ku_T * Cw - ke_T * Ci) - km_T * Ci ; % AMD: alternative writing of quation of first order bioconcentration
 dCm = km_T * Ci - kem_T * Cm;   % first-order metabolism
 
 dX = [dCi; dCm]; % collect derivatives in vector dX
