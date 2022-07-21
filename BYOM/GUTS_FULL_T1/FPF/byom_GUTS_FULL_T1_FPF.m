@@ -175,12 +175,12 @@ glo.fastrep = 0; % set to 1 to assume fast damage repair (death is driven by Ci)
 % syntax: par.name = [startvalue fit(0/1) minval maxval optional:log/normal scale (0/1)];
 par.ku    = [1.444    0 1e-3  10 1];  % uptake rate constant, L/kg/d
 par.ke    = [0.195  0 1e-3  10 1]; % elimination rate constant (d-1)
-par.T_A_tk   = [6102 0 1000 20000 1];  % Arrhenius temperature for TK rates, Kelvin (startvalue from AmP = 10000) 
-par.kr    = [7.919 1 1e-3  10 0]; % damage repair rate constant (d-1)
-par.mi    = [394.0   1    0 1e6 1]; % median threshold for survival (nmol/kg)
-par.hb    = [0.004594 1    0 1e6 1]; % background hazard rate (d-1)
+par.T_A_tk   = [6105 0 1000 20000 1];  % Arrhenius temperature for TK rates, Kelvin (startvalue from AmP = 10000) 
+par.kr    = [0.04525 1 1e-3  10 0]; % damage repair rate constant (d-1)
+par.mi    = [161.4   1    0 1e6 1]; % median threshold for survival (nmol/kg)
+par.hb    = [0.003146 1    0 1e6 1]; % background hazard rate (d-1)
 par.bi    = [0.0001816  1 1e-6 1e6 0]; % killing rate (kg/nmol/d) (SD and mixed)
-par.Fs    = [2.364    1    1 100 1]; % fraction spread of threshold distribution (-) (IT and mixed)
+par.Fs    = [7.290   1    1 100 1]; % fraction spread of threshold distribution (-) (IT and mixed)
 
 
 switch glo.sel % make sure that right parameters are fitted
@@ -213,55 +213,136 @@ prelim_checks % script to perform some preliminary checks and set things up
 % modify options after this call, if needed.
 
 %% Calculations and plotting
-% Here, the function is called that will do the calculation and the plotting.
+% Here, the functions are called that will do the calculation and the
+% plotting. Note that calc_plot can provide all of the plotting information
+% as output, so you can also make your own customised plots. This section,
+% by default, makes a multiplot with all state variables (each in its own
+% panel of the multiplot). When the model is fitted to data, output is
+% provided on the screen (and added to the log-file results.out). The
+% zero-variate data point is also plotted with its prediction (although the
+% legend obscures it here).
+%
 % Options for the plotting can be set using opt_plot (see prelim_checks.m).
-% Options for the optimsation routine can be set using opt_optim. Options
-% for the ODE solver are part of the global glo. 
-% 
-% NOTE: for this package, the options useode and eventson in glo will not
-% be functional: the ODE solver is always used, and the events function as
-% well.
+% Options for the optimisation routine can be set using opt_optim. Options
+% for the ODE solver are part of the global glo.
+%
+% You can turn on the events function there too, to smoothly catch the
+% discontinuity in the model. For the demo, the iterations were turned off
+% (opt_optim.it = 0).
 
-glo.stiff    = [0 1]; % ODE solver 0) ode45 (standard), 1) ode113 (moderately stiff), 2) ode15s (stiff)
-% Seems that standard solver performs good enough, with tight tolerances.
-% Second argument is for normally tight (1), tighter (2), or very tight (3)
-% tolerances.
-glo.break_time = 1; % break time vector up for ODE solver (1) or don't (0)
-
-opt_optim.fit  = 1; % fit the parameters (1), or don't (0)
+glo.eventson   = 1; % events function on (1) or off (0)
+glo.useode     = 1; % calculate model using ODE solver (1) or analytical solution (0)
 opt_optim.it   = 0; % show iterations of the optimisation (1, default) or not (0)
-opt_plot.sho   = 0; % set to 1 to show all scenarios, 0 to only plot model for scenarios with data
 opt_plot.annot = 1; % extra subplot in multiplot for fits: 1) box with parameter estimates, 2) overall legend
+opt_plot.bw    = 0; % if set to 1, plots in black and white with different plot symbols
+
+% glo.diary = 'test_results.out'; % use a different name for the diary
 
 % optimise and plot (fitted parameters in par_out)
 par_out = calc_optim(par,opt_optim); % start the optimisation
-[Xall,Xall2x,Xall2y] = calc_and_plot(par_out,opt_plot); % calculate model lines and plot them
+calc_and_plot(par_out,opt_plot);     % calculate model lines and plot them
 
-opt_tktd.max_exp = 0; % set to 1 to maximise exposure/damage plots on exposure rather than damage
-plot_tktd(par_out,opt_tktd,[]); % leaving opt_conf empty suppresses all CIs for these plots
+% save_plot(gcf,'fit_example',[],3) % save active figure as PDF (see save_plot for more options)
+
+% return % stop here, and run analyses below manually later
+
+%% Local sensitivity analysis
+% Local sensitivity analysis of the model. All model parameters are
+% increased one-by-one by a small percentage. The sensitivity score is
+% by default scaled (dX/X p/dp) or alternatively absolute (dX p/dp).
+%
+% Options for the sensitivity can be set using opt_sense (see
+% prelim_checks.m).
+ 
+% % UNCOMMENT LINE(S) TO CALCULATE
+% opt_sens.state = 2; % vector with state variables for the sensitivity analysis (0 does all, if sens>0)
+% calc_localsens(par_out,opt_sens)
+
+%% Profiling the likelihood
+% By profiling you make robust confidence intervals for one or more of your
+% parameters. Use the names of the parameters as they occurs in your
+% parameter structure _par_ above. This can be a single string (e.g.,
+% 'kd'), a cell array of strings (e.g., {'kd','ke'}), or 'all' to profile
+% all fitted parameters. This example produces a profile for each parameter
+% and provides the 95% confidence interval (on screen and indicated by the
+% horizontal broken line in the plot).
+%
+% Notes: profiling for complex models is a slow process, so grab a coffee!
+% If the profile finds a better solution, it breaks the analysis (as long
+% as you keep the default opt_prof.brkprof=1) and displays the parameters
+% for the new optimum on screen (and in results.out). For the NON-parallel
+% version of calc_proflik, the new optimum is also immediately saves to the
+% log file profiles_newopt.out. You can break of the analysis by pressing
+% ctrl-c anytime, and use the values from the log file to restart (copy the
+% better values into your _par_ structure). For parallel processing, saving
+% would need more thought.
+%
+% Options for profiling can be set using opt_prof (see prelim_checks.m).
+
+opt_prof.detail   = 1; % detailed (1) or a coarse (2) calculation
+opt_prof.subopt   = 0; % number of sub-optimisations to perform to increase robustness
+opt_prof.brkprof  = 2; % when a better optimum is located, stop (1) or automatically refit (2)
+
+% % UNCOMMENT LINE(S) TO CALCULATE
+% par_better = calc_proflik(par_out,'all',opt_prof,opt_optim);  % calculate a profile
+% if ~isempty(par_better)                 % if the profiling found a better optimum ...
+%     print_par(par_better) % display on screen in formatted manner, so it can be copied into the code
+%     calc_and_plot(par_better,opt_plot); % calculate model lines and plot them
+% end
 
 %% Likelihood region
-% Make intervals on model predictions by using a sample of parameter sets
-% taken from the joint likelihood-based conf. region. 
+% Another way to make intervals on model predictions is to use a sample of
+% parameter sets taken from the joint likelihood-based conf. region. This
+% is done by the function calc_likregion.m. It first does profiling of all
+% fitted parameters to find the edges of the region. Then, Latin-Hypercube
+% shooting, keeping only those parameter combinations that are not rejected
+% at the 95% level in a lik.-rat. test. The inner rim will be used for CIs
+% on forward predictions.
+%
+% Options for the likelihood region can be set using opt_likreg (see
+% prelim_checks.m). For the profiling part, use the options in opt_prof.
 
-% UNCOMMENT FOLLOWING LINE(S) TO CALCULATE
-opt_likreg.subopt = 10; % number of sub-optimisations to perform to increase robustness
-opt_likreg.detail = 2; % detailed (1) or a coarse (2) calculation
-opt_likreg.burst  = 1000; % number of random samples from parameter space taken every iteration
-opt_likreg.lim_out = 1; % set to 1 to sample from a smaller part of space (enough for forward predictions)
-% 
-calc_likregion(par_out,1000,opt_likreg); % second argument number of samples (-1 to re-use saved sample from previous runs)
+opt_prof.detail  = 1; % detailed (1) or a coarse (2) calculation
+opt_prof.subopt  = 0; % number of sub-optimisations to perform to increase robustness
+opt_prof.re_fit  = 1; % set to 1 to automatically refit when a new optimum is found
+opt_likreg.skipprof = 0; % skip profiling step; use boundaries from saved likreg set (1) or profiling (2)
+
+par_better = calc_likregion(par_out,500,opt_likreg,opt_prof,opt_optim); 
+% Second entry is the number of accepted parameter sets to aim for. Use -1
+% here to use a saved set.
+
+if isstruct(par_better) % if the profiling found a better optimum ...
+    print_par(par_better) % display on screen in formatted manner, so it can be copied into the code
+    calc_and_plot(par_better,opt_plot); % calculate model lines and plot them
+    return % stop here, and don't go into plotting with CIs
+end
 
 %% Plot results with confidence intervals
-% The following code can be used to make plots with confidence intervals.
-% Options for confidence bounds on model curves can be set using opt_conf
-% (see prelim_checks). The plot_tktd function makes multiplots for the
-% survival data, which are more readable when plotting with various
-% intervals.
-
-% UNCOMMENT FOLLOWING LINE(S) TO CALCULATE AND PLOT
-opt_conf.type    = 2; % make intervals from 1) slice sampler, 2)likelihood region, 3) parspace explorer
-opt_conf.lim_set = 2; % for lik-region sample: use limited set of n_lim points (1) or outer hull (2) to create CIs
-opt_tktd.max_exp = 0; % set to 1 to maximise exposure/damage plots on exposure rather than damage
+% The following code can be used to make a standard plot (the same as for
+% the fits), but with confidence intervals. Options for confidence bounds
+% on model curves can be set using opt_conf (see prelim_checks).
 % 
-plot_tktd(par_out,opt_tktd,opt_conf); 
+% Use opt_conf.type to tell calc_conf which sample to use: 
+% -1) Skips CIs (zero does the same, and an empty opt_conf as well).
+% 1) Bayesian MCMC sample (default); CI on predictions are 95% ranges on 
+% the model curves from the sample 
+% 2) parameter sets from a joint likelihood region using the shooting 
+% method (limited sets can be used), which will yield (asymptotically) 95% 
+% CIs on predictions
+% 3) as option 2, but using the parameter-space explorer
+
+opt_conf.type    = 2; % make intervals from 1) slice sampler, 2) likelihood region shooting, 3) parspace explorer
+opt_conf.lim_set = 2; % use limited set of n_lim points (1) or outer hull (2, likelihood methods only) to create CIs
+opt_conf.sens    = 0; % type of analysis 0) no sensitivities 1) corr. with state, 2) corr. with state/control, 3) corr. with relative change of state over time
+
+out_conf = calc_conf(par_out,opt_conf);   % calculate confidence intervals on model curves
+calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to plot fits with CIs
+
+% Here, we can also use the new plotting function for TKTD models. Even
+% though this is not a TKTD model, we can still plot the internal
+% concentration, with the treatments in separate panels.
+glo.locC       = [1 2]; % tell plot_tktd that our first and second state variable are internal concentrations to plot
+opt_tktd.repls = 0;     % plot individual replicates (1) or means (0)
+opt_tktd.min   = 1;     % set to 1 to show a dotted line for the control (lowest) treatment
+
+plot_tktd(par_out,opt_tktd,opt_conf);
