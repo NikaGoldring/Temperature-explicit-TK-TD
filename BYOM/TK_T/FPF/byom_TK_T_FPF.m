@@ -94,7 +94,7 @@ glo.ref_temp = 293.15; % reference temperature in Kelvin (20 degrees celsius)
 % Model parameters are part of a 'structure' for easy reference. 
 
 % syntax: par.name = [startvalue fit(0/1) minval maxval optional:log/normal scale (0/1)];
-par.ke    = [0.1743   1 0.01 100 1];  % elimination rate constant, d-1
+par.ke    = [0.1978   1 0.01 100 1];  % elimination rate constant, d-1
 par.ku    = [1.452   1 0.01 100 1];  % uptake rate constant, L/kg/d
 par.T_A   = [5940  1 0.01 1e6 1];  % Arrhenius temperature, Kelvin 
 

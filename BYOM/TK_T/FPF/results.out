@@ -118,3 +118,33 @@ ku          1.452 (fit: 1, initial: 1.487)
 T_A         5940. (fit: 1, initial: 316.2) 
 =================================================================================
 Time required: 6.4 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_T_FPF 
+   Analysis date : 20-Jul-2022 (18:49) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     No convergence, optimisation stopped on maximum number of iterations
+     Total 363 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 203.55 (AIC=413.11). 
+=================================================================================
+ke         0.1949 (fit: 1, initial: 0.1978) 
+ku          1.444 (fit: 1, initial: 1.452) 
+T_A         6105. (fit: 1, initial: 5940) 
+=================================================================================
+Time required: 6.4 secs
+ 
+Calculating profiles and sample from confidence region ... please be patient.
+  
+95% confidence interval(s) from the profile(s)
+=================================================================================
+ke         interval:     0.1355 -  0.2731 
+ku         interval:      1.294 -  1.623 
+T_A        interval:      2489. -  1.195e+04 
+=================================================================================
+ 
+Time required: 4 mins, 28.2 secs
