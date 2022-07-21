@@ -198,9 +198,9 @@ calc_and_plot(par_out,opt_plot);     % calculate model lines and plot them
 %
 % Options for profiling can be set using opt_prof (see prelim_checks.m).
 
-% opt_prof.detail   = 1; % detailed (1) or a coarse (2) calculation
-% opt_prof.subopt   = 10; % number of sub-optimisations to perform to increase robustness
-% opt_prof.brkprof  = 2; % when a better optimum is located, stop (1) or automatically refit (2)
+opt_prof.detail   = 1; % detailed (1) or a coarse (2) calculation
+opt_prof.subopt   = 10; % number of sub-optimisations to perform to increase robustness
+opt_prof.brkprof  = 2; % when a better optimum is located, stop (1) or automatically refit (2)
 
 % % UNCOMMENT LINE(S) TO CALCULATE
 % par_better = calc_proflik(par_out,'all',opt_prof,opt_optim);  % calculate a profile
