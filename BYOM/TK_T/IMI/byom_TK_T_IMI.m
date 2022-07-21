@@ -21,7 +21,10 @@
 % Date: 10.04.2021
 %
 % Model extended to use datasets at different temperatures (see derivatives).
-% 
+%
+% Date: 21.07.2022
+% Model changed to be used in BYOMv.6.2
+% Model extended to account for biotransformation
 %
 %% Initial things
 % Make sure that this script is in a directory somewhere *below* the BYOM
@@ -100,7 +103,8 @@ DATA{3,2} = [ 1	    17.57	17.57	17.57
 % 'names' of all scenarios.
 
 X0mat = [17.71	17.58	17.57    % the scenarios (here nominal concentrations) 
-          0      0       0];     % initial values state 1 (internal concentrations)
+          0      0       0       % initial values state 1 (internal concentrations)
+          0      0       0];     % initial values state 2 (internal concentrations of metabolite)
 
 glo.dep_time = [2.01	1.95	1.99]; % depuration times in days
 
@@ -112,11 +116,11 @@ glo.ref_temp = 293.15; % reference temperature in Kelvin (20 degrees celsius)
 % Model parameters are part of a 'structure' for easy reference. 
 
 % syntax: par.name = [startvalue fit(0/1) minval maxval optional:log/normal scale (0/1)];
-par.ke    = [0.1524    1 0.01 100 1];  % elimination rate constant, d-1
-par.ku    = [3.213     1 0.01 100 1];  % uptake rate constant, L/kg/d
-par.km    = [0.04913   1 1e-4 100 1];  % formation rate of the metabolite
-par.kem   = [0.8589   1 1e-4 100 1];  % elimination rate of the metabolite
-par.T_A   = [2818  1 0.01 1e6 1];  % Arrhenius temperature, Kelvin
+par.ke    = [0.01271    1 0.01 100 1];  % elimination rate constant, d-1
+par.ku    = [6.610     1 0.01 100 1];  % uptake rate constant, L/kg/d
+par.km    = [0.01732  1 1e-4 100 1];  % formation rate of the metabolite
+par.kem   = [0.1063   1 1e-4 100 1];  % elimination rate of the metabolite
+par.T_A   = [4703  1 0.01 1e6 1];  % Arrhenius temperature, Kelvin
 
 %% Time vector and labels for plots
 % Specify what to plot. If time vector glo.t is not specified, a default is
@@ -201,9 +205,9 @@ calc_and_plot(par_out,opt_plot);     % calculate model lines and plot them
 %
 % Options for profiling can be set using opt_prof (see prelim_checks.m).
 
-% opt_prof.detail   = 1; % detailed (1) or a coarse (2) calculation
-% opt_prof.subopt   = 0; % number of sub-optimisations to perform to increase robustness
-% opt_prof.brkprof  = 2; % when a better optimum is located, stop (1) or automatically refit (2)
+opt_prof.detail   = 1; % detailed (1) or a coarse (2) calculation
+opt_prof.subopt   = 0; % number of sub-optimisations to perform to increase robustness
+opt_prof.brkprof  = 2; % when a better optimum is located, stop (1) or automatically refit (2)
 
 % % UNCOMMENT LINE(S) TO CALCULATE
 % par_better = calc_proflik(par_out,'all',opt_prof,opt_optim);  % calculate a profile
@@ -212,59 +216,59 @@ calc_and_plot(par_out,opt_plot);     % calculate model lines and plot them
 %     calc_and_plot(par_better,opt_plot); % calculate model lines and plot them
 % end
 
-% %% Likelihood region
-% % Another way to make intervals on model predictions is to use a sample of
-% % parameter sets taken from the joint likelihood-based conf. region. This
-% % is done by the function calc_likregion.m. It first does profiling of all
-% % fitted parameters to find the edges of the region. Then, Latin-Hypercube
-% % shooting, keeping only those parameter combinations that are not rejected
-% % at the 95% level in a lik.-rat. test. The inner rim will be used for CIs
-% % on forward predictions.
-% %
-% % Options for the likelihood region can be set using opt_likreg (see
-% % prelim_checks.m). For the profiling part, use the options in opt_prof.
+%% Likelihood region
+% Another way to make intervals on model predictions is to use a sample of
+% parameter sets taken from the joint likelihood-based conf. region. This
+% is done by the function calc_likregion.m. It first does profiling of all
+% fitted parameters to find the edges of the region. Then, Latin-Hypercube
+% shooting, keeping only those parameter combinations that are not rejected
+% at the 95% level in a lik.-rat. test. The inner rim will be used for CIs
+% on forward predictions.
+%
+% Options for the likelihood region can be set using opt_likreg (see
+% prelim_checks.m). For the profiling part, use the options in opt_prof.
+
+opt_prof.detail  = 1; % detailed (1) or a coarse (2) calculation
+opt_prof.subopt  = 10; % number of sub-optimisations to perform to increase robustness
+opt_prof.re_fit  = 1; % set to 1 to automatically refit when a new optimum is found
+%opt_likreg.skipprof = 0; % skip profiling step; use boundaries from saved likreg set (1) or profiling (2)
+
+par_better = calc_likregion(par_out,500,opt_likreg,opt_prof,opt_optim); 
+% Second entry is the number of accepted parameter sets to aim for. Use -1
+% here to use a saved set.
+
+if isstruct(par_better) % if the profiling found a better optimum ...
+    print_par(par_better) % display on screen in formatted manner, so it can be copied into the code
+    calc_and_plot(par_better,opt_plot); % calculate model lines and plot them
+    return % stop here, and don't go into plotting with CIs
+end
+
+%% Plot results with confidence intervals
+% The following code can be used to make a standard plot (the same as for
+% the fits), but with confidence intervals. Options for confidence bounds
+% on model curves can be set using opt_conf (see prelim_checks).
 % 
-% opt_prof.detail  = 1; % detailed (1) or a coarse (2) calculation
-% opt_prof.subopt  = 10; % number of sub-optimisations to perform to increase robustness
-% opt_prof.re_fit  = 1; % set to 1 to automatically refit when a new optimum is found
-% %opt_likreg.skipprof = 0; % skip profiling step; use boundaries from saved likreg set (1) or profiling (2)
+% Use opt_conf.type to tell calc_conf which sample to use: 
+% -1) Skips CIs (zero does the same, and an empty opt_conf as well).
+% 1) Bayesian MCMC sample (default); CI on predictions are 95% ranges on 
+% the model curves from the sample 
+% 2) parameter sets from a joint likelihood region using the shooting 
+% method (limited sets can be used), which will yield (asymptotically) 95% 
+% CIs on predictions
+% 3) as option 2, but using the parameter-space explorer
+
+opt_conf.type    = 2; % make intervals from 1) slice sampler, 2) likelihood region shooting, 3) parspace explorer
+opt_conf.lim_set = 2; % use limited set of n_lim points (1) or outer hull (2, likelihood methods only) to create CIs
+opt_conf.sens    = 0; % type of analysis 0) no sensitivities 1) corr. with state, 2) corr. with state/control, 3) corr. with relative change of state over time
+
+out_conf = calc_conf(par_out,opt_conf);   % calculate confidence intervals on model curves
+calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to plot fits with CIs
+
+% % Here, we can also use the new plotting function for TKTD models. Even
+% % though this is not a TKTD model, we can still plot the internal
+% % concentration, with the treatments in separate panels.
+% glo.locC       = [1 2]; % tell plot_tktd that our first and second state variable are internal concentrations to plot
+% opt_tktd.repls = 0;     % plot individual replicates (1) or means (0)
+% opt_tktd.min   = 0;     % set to 1 to show a dotted line for the control (lowest) treatment
 % 
-% par_better = calc_likregion(par_out,500,opt_likreg,opt_prof,opt_optim); 
-% % Second entry is the number of accepted parameter sets to aim for. Use -1
-% % here to use a saved set.
-% 
-% if isstruct(par_better) % if the profiling found a better optimum ...
-%     print_par(par_better) % display on screen in formatted manner, so it can be copied into the code
-%     calc_and_plot(par_better,opt_plot); % calculate model lines and plot them
-%     return % stop here, and don't go into plotting with CIs
-% end
-% 
-% %% Plot results with confidence intervals
-% % The following code can be used to make a standard plot (the same as for
-% % the fits), but with confidence intervals. Options for confidence bounds
-% % on model curves can be set using opt_conf (see prelim_checks).
-% % 
-% % Use opt_conf.type to tell calc_conf which sample to use: 
-% % -1) Skips CIs (zero does the same, and an empty opt_conf as well).
-% % 1) Bayesian MCMC sample (default); CI on predictions are 95% ranges on 
-% % the model curves from the sample 
-% % 2) parameter sets from a joint likelihood region using the shooting 
-% % method (limited sets can be used), which will yield (asymptotically) 95% 
-% % CIs on predictions
-% % 3) as option 2, but using the parameter-space explorer
-% 
-% opt_conf.type    = 2; % make intervals from 1) slice sampler, 2) likelihood region shooting, 3) parspace explorer
-% opt_conf.lim_set = 2; % use limited set of n_lim points (1) or outer hull (2, likelihood methods only) to create CIs
-% opt_conf.sens    = 0; % type of analysis 0) no sensitivities 1) corr. with state, 2) corr. with state/control, 3) corr. with relative change of state over time
-% 
-% out_conf = calc_conf(par_out,opt_conf);   % calculate confidence intervals on model curves
-% calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to plot fits with CIs
-% 
-% % % Here, we can also use the new plotting function for TKTD models. Even
-% % % though this is not a TKTD model, we can still plot the internal
-% % % concentration, with the treatments in separate panels.
-% % glo.locC       = [1 2]; % tell plot_tktd that our first and second state variable are internal concentrations to plot
-% % opt_tktd.repls = 0;     % plot individual replicates (1) or means (0)
-% % opt_tktd.min   = 0;     % set to 1 to show a dotted line for the control (lowest) treatment
-% % 
-% % plot_tktd(par_out,opt_tktd,opt_conf);
+% plot_tktd(par_out,opt_tktd,opt_conf);

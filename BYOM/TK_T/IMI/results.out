@@ -1,0 +1,72 @@
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_T_IMI 
+   Analysis date : 21-Jul-2022 (09:08) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+     data state 2(1): 0x0, no data.
+     data state 2(2): 6x3, continuous data, no transf.
+     data state 2(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 409 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 324.17 (AIC=658.34). 
+=================================================================================
+ke        0.01271 (fit: 1, initial: 0.1524) 
+ku          6.610 (fit: 1, initial: 3.213) 
+km        0.01732 (fit: 1, initial: 0.04913) 
+kem        0.1063 (fit: 1, initial: 0.8589) 
+T_A         4703. (fit: 1, initial: 2818) 
+=================================================================================
+Time required: 7.2 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_T_IMI 
+   Analysis date : 21-Jul-2022 (09:12) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+     data state 2(1): 0x0, no data.
+     data state 2(2): 6x3, continuous data, no transf.
+     data state 2(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     No convergence, optimisation stopped on maximum number of iterations
+     Total 638 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 324.13 (AIC=658.26). 
+=================================================================================
+ke        0.01000 (fit: 1, initial: 0.01271) 
+ku          6.765 (fit: 1, initial: 6.61) 
+km        0.01704 (fit: 1, initial: 0.01732) 
+kem        0.1074 (fit: 1, initial: 0.1063) 
+T_A         4613. (fit: 1, initial: 4703) 
+=================================================================================
+Time required: 10.0 secs
+ 
+Calculating profiles and sample from confidence region ... please be patient.
+ 
+The profiles found a better optimum: 324.103 (best was 324.131). 
+   It is a good idea to also make new plots for the fit.
+Parameter values for new optimum (formatted for copy-paste) 
+=================================================================================
+par.ke     = [      0.01  1       0.01        100 1]; 
+par.ku     = [    6.6865  1       0.01        100 1]; 
+par.km     = [  0.017296  1     0.0001        100 1]; 
+par.kem    = [   0.10893  1     0.0001        100 1]; 
+par.T_A    = [    4597.9  1       0.01      1e+06 1]; 
+=================================================================================
+  
+95% confidence interval(s) from the profile(s)
+=================================================================================
+ke         interval:   <0.01000 -  0.1200 
+ku         interval:      5.394 -  8.143 
+km         interval:    0.01246 -  0.02345 
+kem        interval: <0.0001000 -  0.2130 
+T_A        interval:      3222. -  6117. 
+=================================================================================
+ 
+Time required: 1 hour, 27 mins, 42.3 secs
