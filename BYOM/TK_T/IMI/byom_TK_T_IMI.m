@@ -116,11 +116,11 @@ glo.ref_temp = 293.15; % reference temperature in Kelvin (20 degrees celsius)
 % Model parameters are part of a 'structure' for easy reference. 
 
 % syntax: par.name = [startvalue fit(0/1) minval maxval optional:log/normal scale (0/1)];
-par.ke    = [0.01271    1 0.01 100 1];  % elimination rate constant, d-1
-par.ku    = [6.610     1 0.01 100 1];  % uptake rate constant, L/kg/d
-par.km    = [0.01732  1 1e-4 100 1];  % formation rate of the metabolite
-par.kem   = [0.1063   1 1e-4 100 1];  % elimination rate of the metabolite
-par.T_A   = [4703  1 0.01 1e6 1];  % Arrhenius temperature, Kelvin
+par.ke    = [0.1195    1 0.01 100 1];  % elimination rate constant, d-1
+par.ku    = [3.177     1 0.01 100 1];  % uptake rate constant, L/kg/d
+par.km    = [0.02191  1 1e-4 100 1];  % formation rate of the metabolite
+par.kem   = [0.5188   1 1e-4 100 1];  % elimination rate of the metabolite
+par.T_A   = [2856  1 0.01 1e6 1];  % Arrhenius temperature, Kelvin
 
 %% Time vector and labels for plots
 % Specify what to plot. If time vector glo.t is not specified, a default is
