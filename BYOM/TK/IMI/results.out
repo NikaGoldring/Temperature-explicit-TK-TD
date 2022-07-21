@@ -541,3 +541,97 @@ km        0.03657 (fit: 1, initial: 0.03622)
 kem         1.083 (fit: 1, initial: 1.082) 
 =================================================================================
 Time required: 6 mins, 58.1 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_IMI 
+   Analysis date : 20-Jul-2022 (18:32) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+     data state 2(1): 0x0, no data.
+     data state 2(2): 6x3, continuous data, no transf.
+     data state 2(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 118 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 270.07 (AIC=548.14). 
+=================================================================================
+ke         0.1103 (fit: 1, initial: 0.1109) 
+ku          3.023 (fit: 1, initial: 3.027) 
+km        0.02648 (fit: 1, initial: 0.02633) 
+kem        0.7400 (fit: 1, initial: 0.7395) 
+=================================================================================
+Time required: 10 mins, 9.2 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_IMI 
+   Analysis date : 20-Jul-2022 (18:32) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+     data state 2(1): 0x0, no data.
+     data state 2(2): 6x3, continuous data, no transf.
+     data state 2(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 225 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 269.93 (AIC=547.85). 
+=================================================================================
+ke         0.1078 (fit: 1, initial: 0.1101) 
+ku          3.019 (fit: 1, initial: 3.03) 
+km        0.02702 (fit: 1, initial: 0.02681) 
+kem        0.7615 (fit: 1, initial: 0.7597) 
+=================================================================================
+Time required: 10 mins, 17.0 secs
+ 
+The profiles found a better optimum: 269.927 (best was 271.661). 
+   Re-fitting was done, so the final results are for the better optimum.
+   It is a good idea to also make new plots for the fit.
+Parameter values for new optimum (formatted for copy-paste) 
+=================================================================================
+par.ke     = [   0.10783  1       0.01        100 1]; 
+par.ku     = [    3.0193  1       0.01        100 1]; 
+par.km     = [  0.027023  1     0.0001        100 1]; 
+par.kem    = [   0.76154  1     0.0001        100 1]; 
+=================================================================================
+  
+95% confidence interval(s) from the profile(s)
+=================================================================================
+ke         interval:    0.07656 -  0.1450 
+ku         interval:      2.800 -  3.217 
+km         confidence interval is a broken set (check profile):
+      interval 1:   0.01417 -  0.01492 
+      interval 2:   0.01576 -  0.1369 
+kem        interval:     0.2749 -  4.351 
+=================================================================================
+ 
+Time required: 16 mins, 59.8 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_IMI 
+   Analysis date : 21-Jul-2022 (08:29) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+     data state 2(1): 0x0, no data.
+     data state 2(2): 6x3, continuous data, no transf.
+     data state 2(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 61 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 271.66 (AIC=551.32). 
+=================================================================================
+ke        0.09213 (fit: 1, initial: 0.09172) 
+ku          3.056 (fit: 1, initial: 3.041) 
+km        0.04942 (fit: 1, initial: 0.04913) 
+kem        0.8867 (fit: 1, initial: 0.8589) 
+=================================================================================
+Time required: 1.6 secs
+ 
+Calculating profiles and sample from confidence region ... please be patient.
