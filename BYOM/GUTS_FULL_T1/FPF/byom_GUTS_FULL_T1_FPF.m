@@ -176,7 +176,9 @@ glo.fastrep = 0; % set to 1 to assume fast damage repair (death is driven by Ci)
 par.ku    = [1.444    0 1e-3  10 1];  % uptake rate constant, L/kg/d
 par.ke    = [0.195  0 1e-3  10 1]; % elimination rate constant (d-1)
 par.T_A_tk   = [6105 0 1000 20000 1];  % Arrhenius temperature for TK rates, Kelvin (startvalue from AmP = 10000) 
-par.kr    = [0.04525 1 1e-3  10 0]; % damage repair rate constant (d-1)
+%% these need changing now
+
+par.kr    = [0.04525 1 1e-6  10 0]; % damage repair rate constant (d-1)
 par.mi    = [161.4   1    0 1e6 1]; % median threshold for survival (nmol/kg)
 par.hb    = [0.003146 1    0 1e6 1]; % background hazard rate (d-1)
 par.bi    = [0.0001816  1 1e-6 1e6 0]; % killing rate (kg/nmol/d) (SD and mixed)
@@ -341,9 +343,9 @@ calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to p
 % Here, we can also use the new plotting function for TKTD models. Even
 % though this is not a TKTD model, we can still plot the internal
 % concentration, with the treatments in separate panels.
-glo.locC       = [1 2]; % tell plot_tktd that our first and second state variable are internal concentrations to plot
-opt_tktd.repls = 0;     % plot individual replicates (1) or means (0)
-opt_tktd.min   = 1;     % set to 1 to show a dotted line for the control (lowest) treatment
+% glo.locC       = [1 2]; % tell plot_tktd that our first and second state variable are internal concentrations to plot
+% opt_tktd.repls = 0;     % plot individual replicates (1) or means (0)
+% opt_tktd.min   = 0;     % set to 1 to show a dotted line for the control (lowest) treatment
 
 plot_tktd(par_out,opt_tktd,opt_conf);
 
@@ -356,17 +358,17 @@ plot_tktd(par_out,opt_tktd,opt_conf);
 % % Options for LCx (with confidence bounds) can be set using opt_ecx (see
 % % prelim_checks). Note that opt_conf.type=-1 skips CIs.
 % 
-% opt_conf.type    = 2; % make intervals from 1) slice sampler, 2)likelihood region, 3) parspace explorer
-% opt_conf.lim_set = 2; % for lik-region sample: use limited set of n_lim points (1) or outer hull (2) to create CIs
-% 
-% opt_ecx.id_sel    = [0   0 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
-% % opt_ecx.id_sel    = [6   6 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
-% % opt_ecx.id_sel    = [12 12 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
-% 
-% % This is the general method as the fast methods won't work for the full
-% % model (or at least: won't be faster than the general method).
-% opt_ecx.Feff      = [0.50]; % effect levels (>0 en <1), x/100 in ECx
-% opt_ecx.notitle   = 1; % set to 1 to suppress titles above ECx plots
-% Tend = [1:28]; % times at which to calculate LCx, relative to control
-% 
-% calc_ecx([],Tend,opt_ecx,opt_conf); % general method for ECx values
+opt_conf.type    = 2; % make intervals from 1) slice sampler, 2)likelihood region, 3) parspace explorer
+opt_conf.lim_set = 2; % for lik-region sample: use limited set of n_lim points (1) or outer hull (2) to create CIs
+
+opt_ecx.id_sel    = [0   0 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+% opt_ecx.id_sel    = [6   6 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+% opt_ecx.id_sel    = [12 12 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+
+% This is the general method as the fast methods won't work for the full
+% model (or at least: won't be faster than the general method).
+opt_ecx.Feff      = [0.50]; % effect levels (>0 en <1), x/100 in ECx
+opt_ecx.notitle   = 1; % set to 1 to suppress titles above ECx plots
+Tend = [1:28]; % times at which to calculate LCx, relative to control
+
+calc_ecx([],Tend,opt_ecx,opt_conf); % general method for ECx values

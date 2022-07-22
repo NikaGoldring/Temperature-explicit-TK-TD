@@ -1,0 +1,76 @@
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_GUTS_FULL_T1_FPF 
+   Analysis date : 21-Jul-2022 (10:53) 
+   Data entered  :
+     data state 1(1): 11x6, survival data. Weight: 1.
+     data state 1(2): 11x6, survival data. Weight: 1.
+     data state 1(3): 11x6, survival data. Weight: 1.
+     data state 2(1): 0x0, no data. Weight: 1.
+     data state 2(2): 0x0, no data. Weight: 1.
+     data state 2(3): 0x0, no data. Weight: 1.
+     data state 3(1): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(2): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(3): 1x6, continuous data, no transf. Weight: 0.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 196 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 558.20 (AIC=1124.40). 
+=================================================================================
+ku          1.444 (fit: 0, initial: 1.444) 
+ke          0.195 (fit: 0, initial: 0.195) 
+T_A_tk       6105 (fit: 0, initial: 6105) 
+kr        0.04525 (fit: 1, initial: 7.919) 
+mi          161.4 (fit: 1, initial: 394) 
+hb       0.003146 (fit: 1, initial: 0.004594) 
+bi      0.0001816 (fit: 0, initial: 0.0001816) 
+Fs          7.290 (fit: 1, initial: 2.364) 
+=================================================================================
+Parameter kr is fitted on log-scale.
+=================================================================================
+Time required: 1 min, 50.7 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_GUTS_FULL_T1_FPF 
+   Analysis date : 21-Jul-2022 (10:57) 
+   Data entered  :
+     data state 1(1): 11x6, survival data. Weight: 1.
+     data state 1(2): 11x6, survival data. Weight: 1.
+     data state 1(3): 11x6, survival data. Weight: 1.
+     data state 2(1): 0x0, no data. Weight: 1.
+     data state 2(2): 0x0, no data. Weight: 1.
+     data state 2(3): 0x0, no data. Weight: 1.
+     data state 3(1): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(2): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(3): 1x6, continuous data, no transf. Weight: 0.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 181 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 558.20 (AIC=1124.40). 
+=================================================================================
+ku          1.444 (fit: 0, initial: 1.444) 
+ke          0.195 (fit: 0, initial: 0.195) 
+T_A_tk       6105 (fit: 0, initial: 6105) 
+kr        0.04525 (fit: 1, initial: 0.04525) 
+mi          161.4 (fit: 1, initial: 161.4) 
+hb       0.003146 (fit: 1, initial: 0.003146) 
+bi      0.0001816 (fit: 0, initial: 0.0001816) 
+Fs          7.290 (fit: 1, initial: 7.29) 
+=================================================================================
+Parameter kr is fitted on log-scale.
+=================================================================================
+Time required: 1 min, 44.4 secs
+ 
+Calculating profiles and sample from confidence region ... please be patient.
+  
+95% confidence interval(s) from the profile(s)
+=================================================================================
+kr         interval:  <0.001000 -  0.1137 
+mi         interval:      6.708 -  270.9 
+hb         interval:   0.002197 -  0.004276 
+Fs         interval:      4.557 -  14.28 
+=================================================================================
+ 
+Time required: 3 hours, 0 min, 9.9 secs
