@@ -816,3 +816,91 @@ kem        interval:     0.2713 -  4.686
 =================================================================================
  
 Time required: 7 mins, 48.3 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_IMI 
+   Analysis date : 21-Jul-2022 (16:49) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+     data state 2(1): 0x0, no data.
+     data state 2(2): 6x3, continuous data, no transf.
+     data state 2(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 180 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 271.13 (AIC=550.26). 
+=================================================================================
+ke         0.1283 (fit: 1, initial: 0.1089) 
+ku          3.113 (fit: 1, initial: 3.027) 
+km        0.02700 (fit: 1, initial: 0.02695) 
+kem        0.7250 (fit: 1, initial: 0.7605) 
+=================================================================================
+Final values for zero-variate data points included:
+BCF         20.04 (data point: 20, sd: 0.5) 
+=================================================================================
+Time required: 2.9 secs
+ 
+Calculating profiles and sample from confidence region ... please be patient.
+[Warning: Better optimum was found, initiating new optimisation] 
+Goodness-of-fit measures for each state and each data set (R-square)
+Based on the individual replicates, accounting for transformations, and including t=0
+state 1.  -0.24   0.94   0.79
+state 2.    NaN  -0.23  -3.85
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_IMI 
+   Analysis date : 21-Jul-2022 (16:49) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+     data state 2(1): 0x0, no data.
+     data state 2(2): 6x3, continuous data, no transf.
+     data state 2(3): 6x3, continuous data, no transf.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 125 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 270.76 (AIC=549.51). 
+=================================================================================
+ke         0.1269 (fit: 1, initial: 0.1282) 
+ku          3.100 (fit: 1, initial: 3.123) 
+km        0.02675 (fit: 1, initial: 0.02665) 
+kem        0.7473 (fit: 1, initial: 0.7452) 
+=================================================================================
+Final values for zero-variate data points included:
+BCF         20.17 (data point: 20, sd: 0.5) 
+=================================================================================
+Time required: 12.3 secs
+ 
+The profiles found a better optimum: 270.757 (best was 271.131). 
+   Re-fitting was done, so the final results are for the better optimum.
+   It is a good idea to also make new plots for the fit.
+Parameter values for new optimum (formatted for copy-paste) 
+=================================================================================
+par.ke     = [   0.12692  1      1e-06        100 1]; 
+par.ku     = [    3.1002  1       0.01        100 1]; 
+par.km     = [   0.02675  1     0.0001        100 1]; 
+par.kem    = [   0.74734  1     0.0001        100 1]; 
+=================================================================================
+  
+95% confidence interval(s) from the profile(s)
+=================================================================================
+ke         confidence interval is a broken set (check profile):
+      interval 1:   0.05195 -  0.1047 
+      interval 2:    0.1096 -  0.1117 
+      interval 3:    0.1118 -  0.1414 
+ku         interval:      2.926 -  3.275 
+km         confidence interval is a broken set (check profile):
+      interval 1:   0.01464 -  0.1288 
+      interval 2:    0.1354 -  0.1517 
+      interval 3:    0.1537 -  0.1600 
+kem        confidence interval is a broken set (check profile):
+      interval 1:    0.2534 -  0.2770 
+      interval 2:    0.3055 -  4.847 
+=================================================================================
+ 
+Time required: 9 mins, 55.6 secs
