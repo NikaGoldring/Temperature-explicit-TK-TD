@@ -74,3 +74,200 @@ Fs         interval:      4.557 -  14.28
 =================================================================================
  
 Time required: 3 hours, 0 min, 9.9 secs
+ECx with CIs: 95% pred. likelihood, shooting method
+================================================================================
+time (days)    EC50 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0   5.14e+03 (  3.31e+03 -   8.67e+03) 
+2.0   1.34e+03 (      876. -   2.22e+03) 
+3.0       618. (      413. -   1.01e+03) 
+4.0       361. (      246. -       584.) 
+5.0       240. (      166. -       383.) 
+6.0       174. (      122. -       272.) 
+7.0       132. (      94.9 -       205.) 
+8.0       105. (      76.8 -       161.) 
+9.0       86.5 (      64.1 -       130.) 
+10.0       72.7 (      54.8 -       108.) 
+11.0       62.4 (      47.8 -       91.0) 
+12.0       54.4 (      42.4 -       78.2) 
+13.0       48.1 (      38.0 -       68.1) 
+14.0       43.0 (      34.6 -       60.0) 
+15.0       38.9 (      31.7 -       53.4) 
+16.0       35.4 (      29.1 -       48.0) 
+17.0       32.5 (      26.9 -       43.4) 
+18.0       30.1 (      25.1 -       39.5) 
+19.0       27.9 (      23.5 -       36.2) 
+20.0       26.1 (      21.9 -       33.5) 
+21.0       24.5 (      20.6 -       31.1) 
+22.0       23.1 (      19.5 -       29.1) 
+23.0       21.9 (      18.4 -       27.3) 
+24.0       20.8 (      17.5 -       25.6) 
+25.0       19.9 (      16.7 -       24.3) 
+26.0       19.0 (      16.0 -       23.2) 
+27.0       18.2 (      15.3 -       22.1) 
+28.0       17.5 (      14.7 -       21.2) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000
+ECx with CIs: 95% pred. likelihood, shooting method
+================================================================================
+time (days)    EC50 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0   5.19e+03 (  3.34e+03 -   8.74e+03) 
+2.0   1.36e+03 (      892. -   2.26e+03) 
+3.0       634. (      423. -   1.04e+03) 
+4.0       374. (      254. -       603.) 
+5.0       251. (      174. -       399.) 
+6.0       182. (      129. -       286.) 
+7.0       140. (      101. -       217.) 
+8.0       112. (      82.2 -       171.) 
+9.0       93.0 (      69.1 -       139.) 
+10.0       78.7 (      59.5 -       116.) 
+11.0       68.0 (      52.3 -       98.9) 
+12.0       59.7 (      46.7 -       85.5) 
+13.0       53.1 (      42.3 -       74.9) 
+14.0       47.8 (      38.7 -       66.4) 
+15.0       43.5 (      35.6 -       59.5) 
+16.0       39.9 (      32.9 -       53.7) 
+17.0       36.8 (      30.6 -       48.9) 
+18.0       34.2 (      28.7 -       44.7) 
+19.0       32.0 (      26.9 -       41.2) 
+20.0       30.1 (      25.3 -       38.3) 
+21.0       28.4 (      23.9 -       35.8) 
+22.0       27.0 (      22.7 -       33.6) 
+23.0       25.7 (      21.6 -       31.7) 
+24.0       24.5 (      20.6 -       30.0) 
+25.0       23.5 (      19.7 -       28.6) 
+26.0       22.6 (      19.0 -       27.4) 
+27.0       21.7 (      18.3 -       26.3) 
+28.0       21.0 (      17.5 -       25.3) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_GUTS_FULL_T1_FPF 
+   Analysis date : 25-Jul-2022 (12:00) 
+   Data entered  :
+     data state 1(1): 11x6, survival data. Weight: 1.
+     data state 1(2): 11x6, survival data. Weight: 1.
+     data state 1(3): 11x6, survival data. Weight: 1.
+     data state 2(1): 0x0, no data. Weight: 1.
+     data state 2(2): 0x0, no data. Weight: 1.
+     data state 2(3): 0x0, no data. Weight: 1.
+     data state 3(1): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(2): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(3): 1x6, continuous data, no transf. Weight: 0.
+   Search method: Nelder-Mead simplex direct search, 2 rounds. 
+     The optimisation routine has converged to a solution
+     Total 181 simplex iterations used to optimise. 
+     Minus log-likelihood has reached the value 558.20 (AIC=1124.40). 
+=================================================================================
+ku          1.444 (fit: 0, initial: 1.444) 
+ke          0.195 (fit: 0, initial: 0.195) 
+T_A_tk       6105 (fit: 0, initial: 6105) 
+kr        0.04525 (fit: 1, initial: 0.04525) 
+mi          161.4 (fit: 1, initial: 161.4) 
+hb       0.003146 (fit: 1, initial: 0.003146) 
+bi      0.0001816 (fit: 0, initial: 0.0001816) 
+Fs          7.290 (fit: 1, initial: 7.29) 
+=================================================================================
+Parameter kr is fitted on log-scale.
+=================================================================================
+Time required: 1 min, 43.7 secs
+ 
+Calculating profiles and sample from confidence region ... please be patient.
+<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T1\FPF\derivatives.m',37,1)">37  </a>S  = X(glo.locS); % state is the survival probability at previous time point
+if system_dependent('IsDebugMode')==1, dbquit; end
+opt_conf.type    = 2; % make intervals from 1) slice sampler, 2)likelihood region, 3) parspace explorer
+opt_conf.lim_set = 2; % for lik-region sample: use limited set of n_lim points (1) or outer hull (2) to create CIs
+
+%opt_ecx.id_sel    = [0   0 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+%opt_ecx.id_sel    = [6   6 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+opt_ecx.id_sel    = [12 12 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+
+% This is the general method as the fast methods won't work for the full
+% model (or at least: won't be faster than the general method).
+opt_ecx.Feff      = [0.50]; % effect levels (>0 en <1), x/100 in ECx
+opt_ecx.notitle   = 1; % set to 1 to suppress titles above ECx plots
+Tend = [1:28]; % times at which to calculate LCx, relative to control
+
+calc_ecx([],Tend,opt_ecx,opt_conf); % general method for ECx values
+ 
+Amount of 0.3764 added to the chi-square criterion for inner rim
+Slightly more is taken to provide a generally conservative estimate of the CIs.
+  Outer hull of 286 sets used.
+Calculating CIs on model predictions, using sample from joint likelihood region ... please be patient.
+ 
+Results for ECx without CIs (they are calculated next)
+================================================================================
+time (days)    EC50    (ug/L)
+================================================================================
+  Survival    :
+1.0   5.25e+03     
+2.0   1.39e+03     
+3.0       656.     
+4.0       391.     
+5.0       265.     
+6.0       194.     
+7.0       151.     
+8.0       122.     
+9.0       102.     
+10.0       87.0     
+11.0       75.7     
+12.0       67.0     
+13.0       60.1     
+14.0       54.5     
+15.0       49.9     
+16.0       46.0     
+17.0       42.8     
+18.0       40.0     
+19.0       37.7     
+20.0       35.6     
+21.0       33.8     
+22.0       32.2     
+23.0       30.8     
+24.0       29.6     
+25.0       28.5     
+26.0       27.5     
+27.0       26.6     
+28.0       25.8     
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000 (NaN is out of bounds)
+ 
+ECx with CIs: 95% pred. likelihood, shooting method
+================================================================================
+time (days)    EC50 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0   5.25e+03 (  3.38e+03 -   8.84e+03) 
+2.0   1.39e+03 (      912. -   2.31e+03) 
+3.0       656. (      438. -   1.07e+03) 
+4.0       391. (      266. -       630.) 
+5.0       265. (      184. -       421.) 
+6.0       194. (      137. -       304.) 
+7.0       151. (      109. -       233.) 
+8.0       122. (      89.4 -       185.) 
+9.0       102. (      75.9 -       152.) 
+10.0       87.0 (      66.0 -       128.) 
+11.0       75.7 (      58.5 -       110.) 
+12.0       67.0 (      52.7 -       95.5) 
+13.0       60.1 (      48.1 -       84.3) 
+14.0       54.5 (      44.3 -       75.2) 
+15.0       49.9 (      41.0 -       67.8) 
+16.0       46.0 (      38.1 -       61.6) 
+17.0       42.8 (      35.7 -       56.3) 
+18.0       40.0 (      33.6 -       51.9) 
+19.0       37.7 (      31.7 -       48.2) 
+20.0       35.6 (      29.9 -       45.0) 
+21.0       33.8 (      28.4 -       42.3) 
+22.0       32.2 (      27.1 -       39.9) 
+23.0       30.8 (      25.9 -       37.8) 
+24.0       29.6 (      24.9 -       36.1) 
+25.0       28.5 (      24.0 -       34.6) 
+26.0       27.5 (      23.1 -       33.3) 
+27.0       26.6 (      22.2 -       32.1) 
+28.0       25.8 (      21.3 -       31.2) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000
