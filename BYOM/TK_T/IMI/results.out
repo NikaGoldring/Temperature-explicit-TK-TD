@@ -221,3 +221,33 @@ kem        0.6378 (fit: 1, initial: 0.6379)
 T_A         2876. (fit: 1, initial: 2875) 
 =================================================================================
 Time required: 31 mins, 58.1 secs
+ 
+The profiles found a better optimum: 250.024 (best was 250.165). 
+   Re-fitting was done, so the final results are for the better optimum.
+   It is a good idea to also make new plots for the fit.
+Parameter values for new optimum (formatted for copy-paste) 
+=================================================================================
+par.ke     = [    0.1186  1       0.01        100 1]; 
+par.ku     = [    3.1664  1       0.01        100 1]; 
+par.km     = [  0.025535  1     0.0001        100 1]; 
+par.kem    = [    0.6378  1     0.0001        100 1]; 
+par.T_A    = [    2875.8  1       0.01      1e+06 1]; 
+=================================================================================
+  
+95% confidence interval(s) from the profile(s)
+=================================================================================
+ke         interval:    0.05654 -  0.1534 
+ku         interval:      2.973 -  3.399 
+km         confidence interval is a broken set (check profile):
+      interval 1:   0.01475 -  0.01531 
+      interval 2:   0.01664 -  0.06883 
+kem        confidence interval is a broken set (check profile):
+      interval 1:    0.2390 -  0.3031 
+      interval 2:    0.3349 -  1.733 
+      interval 3:     1.838 -  2.057 
+T_A        confidence interval is a broken set (check profile):
+      interval 1:     2297. -  3593. 
+      interval 2:     3682. -  3685. 
+=================================================================================
+ 
+Time required: 4 hours, 4 mins, 24.9 secs
