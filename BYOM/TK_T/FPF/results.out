@@ -181,3 +181,146 @@ T_A        interval:      1951. -  1.586e+04
 =================================================================================
  
 Time required: 3 mins, 55.2 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:       0.01 -        100 fit: 1 (norm)
+ku    bounds:       0.01 -        100 fit: 1 (norm)
+T_A   bounds:       0.01 -      1e+06 fit: 1 (norm)
+=====================================================================
+ 
+Starting round 1 with initial grid of 512 parameter sets
+<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\funfun\private\odefcncleanup.m',11,1)">11  </a>        newFcn = @(t,y) oldFcn(t,y,inputArgs{:});
+if system_dependent('IsDebugMode')==1, dbquit; end
+[Warning: Cannot load an object of class 'EditInteraction':
+Its class cannot be found.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\+matlab\+graphics\+internal\+figfile\@FigFile\read.m', 31)" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\+matlab\+graphics\+internal\+figfile\@FigFile\read.m',31,0)">line 31</a>)
+In matlab.graphics.internal.figfile.FigFile
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('loadFigure', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\private\loadFigure.m', 31)" style="font-weight:bold">loadFigure</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\private\loadFigure.m',31,0)">line 31</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('openfig>localOpenFigure', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m', 75)" style="font-weight:bold">openfig>localOpenFigure</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m',75,0)">line 75</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('openfig', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m', 40)" style="font-weight:bold">openfig</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m',40,0)">line 40</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('open', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\general\open.m', 133)" style="font-weight:bold">open</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\general\open.m',133,0)">line 133</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiopen', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\uitools\uiopen.m', 159)" style="font-weight:bold">uiopen</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\uitools\uiopen.m',159,0)">line 159</a>)] 
+[Warning: Cannot load an object of class 'EditInteraction':
+Its class cannot be found.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\+matlab\+graphics\+internal\+figfile\@FigFile\read.m', 31)" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\+matlab\+graphics\+internal\+figfile\@FigFile\read.m',31,0)">line 31</a>)
+In matlab.graphics.internal.figfile.FigFile
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('loadFigure', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\private\loadFigure.m', 31)" style="font-weight:bold">loadFigure</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\private\loadFigure.m',31,0)">line 31</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('openfig>localOpenFigure', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m', 75)" style="font-weight:bold">openfig>localOpenFigure</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m',75,0)">line 75</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('openfig', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m', 40)" style="font-weight:bold">openfig</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m',40,0)">line 40</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('open', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\general\open.m', 133)" style="font-weight:bold">open</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\general\open.m',133,0)">line 133</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiopen', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\uitools\uiopen.m', 159)" style="font-weight:bold">uiopen</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\uitools\uiopen.m',159,0)">line 159</a>)] 
+[Warning: Cannot load an object of class 'EditInteraction':
+Its class cannot be found.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\+matlab\+graphics\+internal\+figfile\@FigFile\read.m', 31)" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\+matlab\+graphics\+internal\+figfile\@FigFile\read.m',31,0)">line 31</a>)
+In matlab.graphics.internal.figfile.FigFile
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('loadFigure', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\private\loadFigure.m', 31)" style="font-weight:bold">loadFigure</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\private\loadFigure.m',31,0)">line 31</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('openfig>localOpenFigure', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m', 75)" style="font-weight:bold">openfig>localOpenFigure</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m',75,0)">line 75</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('openfig', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m', 40)" style="font-weight:bold">openfig</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m',40,0)">line 40</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('open', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\general\open.m', 133)" style="font-weight:bold">open</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\general\open.m',133,0)">line 133</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiopen', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\uitools\uiopen.m', 159)" style="font-weight:bold">uiopen</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\uitools\uiopen.m',159,0)">line 159</a>)] 
+[Warning: Cannot load an object of class 'EditInteraction':
+Its class cannot be found.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\+matlab\+graphics\+internal\+figfile\@FigFile\read.m', 31)" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\+matlab\+graphics\+internal\+figfile\@FigFile\read.m',31,0)">line 31</a>)
+In matlab.graphics.internal.figfile.FigFile
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('loadFigure', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\private\loadFigure.m', 31)" style="font-weight:bold">loadFigure</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\private\loadFigure.m',31,0)">line 31</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('openfig>localOpenFigure', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m', 75)" style="font-weight:bold">openfig>localOpenFigure</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m',75,0)">line 75</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('openfig', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m', 40)" style="font-weight:bold">openfig</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m',40,0)">line 40</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('open', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\general\open.m', 133)" style="font-weight:bold">open</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\general\open.m',133,0)">line 133</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiopen', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\uitools\uiopen.m', 159)" style="font-weight:bold">uiopen</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\uitools\uiopen.m',159,0)">line 159</a>)] 
+[Warning: Cannot load an object of class 'EditInteraction':
+Its class cannot be found.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\+matlab\+graphics\+internal\+figfile\@FigFile\read.m', 31)" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\+matlab\+graphics\+internal\+figfile\@FigFile\read.m',31,0)">line 31</a>)
+In matlab.graphics.internal.figfile.FigFile
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('loadFigure', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\private\loadFigure.m', 31)" style="font-weight:bold">loadFigure</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\private\loadFigure.m',31,0)">line 31</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('openfig>localOpenFigure', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m', 75)" style="font-weight:bold">openfig>localOpenFigure</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m',75,0)">line 75</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('openfig', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m', 40)" style="font-weight:bold">openfig</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m',40,0)">line 40</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('open', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\general\open.m', 133)" style="font-weight:bold">open</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\general\open.m',133,0)">line 133</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiopen', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\uitools\uiopen.m', 159)" style="font-weight:bold">uiopen</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\uitools\uiopen.m',159,0)">line 159</a>)] 
+[Warning: Cannot load an object of class 'EditInteraction':
+Its class cannot be found.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('matlab.graphics.internal.figfile.FigFile/read', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\+matlab\+graphics\+internal\+figfile\@FigFile\read.m', 31)" style="font-weight:bold">matlab.graphics.internal.figfile.FigFile/read</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\+matlab\+graphics\+internal\+figfile\@FigFile\read.m',31,0)">line 31</a>)
+In matlab.graphics.internal.figfile.FigFile
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('loadFigure', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\private\loadFigure.m', 31)" style="font-weight:bold">loadFigure</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\private\loadFigure.m',31,0)">line 31</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('openfig>localOpenFigure', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m', 75)" style="font-weight:bold">openfig>localOpenFigure</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m',75,0)">line 75</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('openfig', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m', 40)" style="font-weight:bold">openfig</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\graphics\objectsystem\openfig.m',40,0)">line 40</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('open', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\general\open.m', 133)" style="font-weight:bold">open</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\general\open.m',133,0)">line 133</a>)
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('uiopen', 'C:\Program Files\MATLAB\R2020b\toolbox\matlab\uitools\uiopen.m', 159)" style="font-weight:bold">uiopen</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2020b\toolbox\matlab\uitools\uiopen.m',159,0)">line 159</a>)] 
+byom_TK_T_FPF
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:       0.01 -         10 fit: 1 (norm)
+ku    bounds:       0.01 -         10 fit: 1 (norm)
+T_A   bounds:       0.01 -      1e+06 fit: 1 (norm)
+=====================================================================
+ 
+Starting round 1 with initial grid of 512 parameter sets
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:       0.01 -         10 fit: 1 (norm)
+ku    bounds:       0.01 -         10 fit: 1 (norm)
+T_A   bounds:       0.01 -      2e+04 fit: 1 (norm)
+=====================================================================
+ 
+Starting round 1 with initial grid of 512 parameter sets
+  Status: best fit so far is (minloglik) 331.2371
+Starting round 2, refining a selection of 200 parameter sets, with 25 tries each
+  Status: 1 sets within total CI and 1 within inner. Best fit: 206.0066
+Starting round 3, refining a selection of 200 parameter sets, with 25 tries each
+  Status: 2 sets within total CI and 2 within inner. Best fit: 205.9873
+Starting round 4, refining a selection of 200 parameter sets, with 25 tries each
+  Status: 10 sets within total CI and 4 within inner. Best fit: 205.9873
+Starting round 5, refining a selection of 200 parameter sets, with 25 tries each
+  Status: 38 sets within total CI and 14 within inner. Best fit: 205.9873
+Starting round 6, refining a selection of 200 parameter sets, with 25 tries each
+  Status: 135 sets within total CI and 46 within inner. Best fit: 205.9873
+Starting round 7, refining a selection of 200 parameter sets, with 20 tries each
+  Status: 318 sets within total CI and 118 within inner. Best fit: 205.9873
+Starting round 8, refining a selection of 212 parameter sets, with 20 tries each
+  Status: 669 sets within total CI and 244 within inner. Best fit: 205.8853
+  Finished sampling, running a simplex optimisation ...
+  Status: 670 sets within total CI and 245 within inner. Best fit: 205.8852
+Starting round 9, creating the profile likelihoods for each parameter
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 671 sets within total CI and 246 within inner. Best fit: 205.8851
+  Profiling has detected gaps between profile and sample, which requires extra sampling rounds.
+Starting round 10, (extra 1) refining a selection of 44 parameter sets, with 40 tries each
+  Status: 2431 sets within total CI and 1246 within inner. Best fit: 205.8851
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 2580 sets in joint CI and 1353 in inner CI.
+   Propagation set: 466 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+ke    best:     0.1353 (    0.1180  -    0.1575 ) fit: 1 (norm)
+ku    best:      1.313 (     1.229  -     1.416 ) fit: 1 (norm)
+T_A   best:      9243. (     1943.  - 1.587e+04 ) fit: 1 (norm)
+==========================================================================
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_T_FPF 
+   Analysis date : 26-Jul-2022 (08:05) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value 205.89 (AIC=417.77). 
+=================================================================================
+ke         0.1353 (fit: 1, initial: NaN) 
+ku          1.313 (fit: 1, initial: NaN) 
+T_A         9243. (fit: 1, initial: NaN) 
+=================================================================================
+Final values for zero-variate data points included:
+BCF         9.700 (data point: 10, sd: 0.5) 
+=================================================================================
+Time required: 8 mins, 27.3 secs
