@@ -46,6 +46,9 @@ Di = X(glo.locD); % state is the scaled damage at previous time point
 
 ku   = par.ku(1);   % uptake rate constant, L * kg-1 d-1
 ke   = par.ke(1);   % elimination rate constant
+km   = par.km(1);     % formation rate of the metabolite
+%kem  = par.kem(1);    % elimination rate of the metabolite
+
 kr   = par.kr(1);   % damage repair rate constant
 % mi   = par.mi(1);   % median of threshold distribution (used in call_deri)
 % bi   = par.bi(1);   % killing rate (used in call_deri)
@@ -63,6 +66,9 @@ exp_temp = glo.Temp_scen(2,c == glo.Temp_scen(1,:));
 % Temperature correction for rates
 ku_T = ku * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp) );
 ke_T = ke * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp) );
+km_T  = km * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp );
+%kem_T = kem * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp) );
+
 
 %% Extract correct exposure for THIS time point
 % Allow for external concentrations to change over time, either
@@ -80,7 +86,8 @@ end
 % This is the actual model, specified as a system of ODEs.
 
 % dCi = ke * (Kiw * c - Ci); % first order bioconcentration
-dCi = ku_T * c - ke_T * Ci ; % alternative writing of quation of first order bioconcentration
+dCi = (ku_T * Cw - ke_T * Ci) - km_T * Ci ; % AMD: alternative writing of quation of first order bioconcentration
+%dCm = km_T * Ci - kem_T * Cm;   % first-order metabolism
 
 if glo.fastrep == 1 % is we assume that damage repair is infinitely fast
     dDi = dCi; % same change in damage as in internal conc.
