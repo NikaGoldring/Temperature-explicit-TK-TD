@@ -66,7 +66,7 @@ exp_temp = glo.Temp_scen(2,c == glo.Temp_scen(1,:));
 % Temperature correction for rates
 ku_T = ku * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp) );
 ke_T = ke * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp) );
-km_T  = km * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp );
+km_T  = km * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp) );
 %kem_T = kem * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp) );
 
 
@@ -86,7 +86,7 @@ end
 % This is the actual model, specified as a system of ODEs.
 
 % dCi = ke * (Kiw * c - Ci); % first order bioconcentration
-dCi = (ku_T * Cw - ke_T * Ci) - km_T * Ci ; % AMD: alternative writing of quation of first order bioconcentration
+dCi = (ku_T * c - ke_T * Ci) - km_T * Ci ; % AMD: alternative writing of quation of first order bioconcentration
 %dCm = km_T * Ci - kem_T * Cm;   % first-order metabolism
 
 if glo.fastrep == 1 % is we assume that damage repair is infinitely fast

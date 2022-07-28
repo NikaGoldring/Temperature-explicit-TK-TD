@@ -1,0 +1,60 @@
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    fixed :     0.1397              fit: 0
+ku    fixed :       3.25              fit: 0
+km    fixed :    0.02172              fit: 0
+T_A_tk fixed :       3044              fit: 0
+kr    bounds:      0.001 -         10 fit: 1 (log)
+mi    bounds:      1e-06 -       1000 fit: 1 (log)
+hb    bounds:          0 -         10 fit: 1 (norm)
+bi    bounds:      1e-06 -         10 fit: 1 (log)
+Fs    fixed :      42.99              fit: 0
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+{Unrecognized function or variable 'Cw'.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('derivatives', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T1\IMI\derivatives.m', 89)" style="font-weight:bold">derivatives</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T1\IMI\derivatives.m',89,0)">line 89</a>)
+dCi = (ku_T * Cw - ke_T * Ci) - km_T * Ci ; % AMD: alternative writing of quation of first order bioconcentration
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('odearguments', 'C:\Program Files\MATLAB\R2021b\toolbox\matlab\funfun\private\odearguments.m', 90)" style="font-weight:bold">odearguments</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2021b\toolbox\matlab\funfun\private\odearguments.m',90,0)">line 90</a>)
+f0 = feval(ode,t0,y0,args{:});   % ODE15I sets args{1} to yp0.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('ode45', 'C:\Program Files\MATLAB\R2021b\toolbox\matlab\funfun\ode45.m', 106)" style="font-weight:bold">ode45</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2021b\toolbox\matlab\funfun\ode45.m',106,0)">line 106</a>)
+  odearguments(FcnHandlesUsed, solver_name, ode, tspan, y0, options, varargin);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('call_deri', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T1\IMI\call_deri.m', 195)" style="font-weight:bold">call_deri</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T1\IMI\call_deri.m',195,0)">line 195</a>)
+                [tout_tmp,Xout_tmp,TE,~,~] = ode45(@derivatives,t_tmp,X0,options,par,c,glo);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('transfer', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\transfer.m', 91)" style="font-weight:bold">transfer</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\transfer.m',91,0)">line 91</a>)
+    [Xout,~,Xout2,zvd] = call_deri(ttot,par,[ctot(i);X0],glo); % use call_deri.m to provide the output per concentration
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_parspace', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\parspace\calc_parspace.m', 263)" style="font-weight:bold">calc_parspace</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\parspace\calc_parspace.m',263,0)">line 263</a>)
+    coll_all(i_t,end) = transfer(pfit,pmat); % calculate the min-log-likelihood for this parameter combination,
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_optim_ps', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\parspace\calc_optim_ps.m', 178)" style="font-weight:bold">calc_optim_ps</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\parspace\calc_optim_ps.m',178,0)">line 178</a>)
+[minmax,mll,stats,pmat_print,pmat] = calc_parspace(pmat,opt_optim,SETTINGS_OPTIM);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_optim', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\calc_optim.m', 119)" style="font-weight:bold">calc_optim</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\calc_optim.m',119,0)">line 119</a>)
+        [pmat,pmat_print,FVAL,names_out] = calc_optim_ps(pmat,opt_optim);
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('byom_GUTS_FULL_T1_IMI', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T1\IMI\byom_GUTS_FULL_T1_IMI.m', 251)" style="font-weight:bold">byom_GUTS_FULL_T1_IMI</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T1\IMI\byom_GUTS_FULL_T1_IMI.m',251,0)">line 251</a>)
+par_out = calc_optim(par,opt_optim); % start the optimisation
+} 
+byom_GUTS_FULL_T1_IMI
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    fixed :     0.1397              fit: 0
+ku    fixed :       3.25              fit: 0
+km    fixed :    0.02172              fit: 0
+T_A_tk fixed :       3044              fit: 0
+kr    bounds:      0.001 -         10 fit: 1 (log)
+mi    bounds:      1e-06 -       1000 fit: 1 (log)
+hb    bounds:          0 -         10 fit: 1 (norm)
+bi    bounds:      1e-06 -         10 fit: 1 (log)
+Fs    fixed :      42.99              fit: 0
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets

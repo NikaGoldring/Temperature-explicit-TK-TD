@@ -9,6 +9,9 @@
 % Date: Mai 2021
 % Model extended to use datasets at different temperatures (see derivatives).
 %
+% Date: 28.07.2022
+% Model changed to be used by BYOMv.6.2 and added biotransformation 
+%
 % BYOM is a General framework for simulating model systems. The files in
 % this directory use the ODE solver only, and therefore <simplefun.html
 % simplefun.m> will be missing.
@@ -30,7 +33,6 @@
 clear, clear global % clear the workspace and globals
 global DATA W X0mat % make the data set and initial states global variables
 global glo          % allow for global parameters in structure glo
-global pri zvd      % global structures for optional priors and zero-variate data
 diary off           % turn of the diary function (if it is accidentaly on)
 set(0,'DefaultFigureWindowStyle','docked'); % collect all figure into one window with tab controls
 % set(0,'DefaultFigureWindowStyle','normal'); % separate figure windows
@@ -186,7 +188,7 @@ par.km     = [0.02172  0 1e-4 10 0];  % formation rate of the metabolite
 par.T_A_tk = [3044     0 0.01 2e4 1];  % Arrhenius temperature, Kelvin
 % TD parameter starts for SD
 par.kr    = [0.001    1 1e-3  10  0]; % damage repair rate constant (d-1)
-par.mi    = [12.45    1    0  1e3 0]; % median threshold for survival (nmol/kg)
+par.mi    = [12.45    1 1e-6  1e3 0]; % median threshold for survival (nmol/kg)
 par.hb    = [0.003221 1    0  10  1]; % background hazard rate (d-1)
 par.bi    = [2e-3     1 1e-6  10  0]; % killing rate (kg/nmol/d) (SD and mixed)
 par.Fs    = [42.99    1    1  100 1]; % fraction spread of threshold distribution (-) (IT and mixed)
