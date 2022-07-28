@@ -271,3 +271,143 @@ time (days)    EC50 (95 perc. CI)    (ug/L)
 28.0       25.8 (      21.3 -       31.2) 
 ================================================================================
 Boundaries used as min-max: 1e-07 - 1000000
+ 
+Settings for parameter search ranges:
+=====================================================================
+ku    fixed :      1.313              fit: 0
+ke    fixed :     0.1353              fit: 0
+T_A_tk fixed :       9243              fit: 0
+kr    bounds:      1e-06 -         10 fit: 1 (log)
+mi    bounds:          0 -       1000 fit: 1 (norm)
+hb    bounds:          0 -         10 fit: 1 (norm)
+bi    bounds:      1e-06 -         10 fit: 1 (log)
+Fs    fixed :       7.29              fit: 0
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('odefcncleanup', 'C:\Program Files\MATLAB\R2021b\toolbox\matlab\funfun\private\odefcncleanup.m', 11)" style="font-weight:bold">odefcncleanup</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2021b\toolbox\matlab\funfun\private\odefcncleanup.m',11,0)">line 11</a>)
+
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('ode45', 'C:\Program Files\MATLAB\R2021b\toolbox\matlab\funfun\ode45.m', 265)" style="font-weight:bold">ode45</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2021b\toolbox\matlab\funfun\ode45.m',265,0)">line 265</a>)
+odeFcn_main = odefcncleanup(FcnUsed,odeFcn,odeArgs);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('call_deri', 'C:\Users\magol001\OneDrive - WageningenUR\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T1\FPF\call_deri.m', 195)" style="font-weight:bold">call_deri</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - WageningenUR\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T1\FPF\call_deri.m',195,0)">line 195</a>)
+                [tout_tmp,Xout_tmp,TE,~,~] = ode45(@derivatives,t_tmp,X0,options,par,c,glo);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('transfer', 'C:\Users\magol001\OneDrive - WageningenUR\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\transfer.m', 91)" style="font-weight:bold">transfer</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - WageningenUR\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\transfer.m',91,0)">line 91</a>)
+    [Xout,~,Xout2,zvd] = call_deri(ttot,par,[ctot(i);X0],glo); % use call_deri.m to provide the output per concentration
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_parspace', 'C:\Users\magol001\OneDrive - WageningenUR\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\parspace\calc_parspace.m', 263)" style="font-weight:bold">calc_parspace</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - WageningenUR\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\parspace\calc_parspace.m',263,0)">line 263</a>)
+    coll_all(i_t,end) = transfer(pfit,pmat); % calculate the min-log-likelihood for this parameter combination,
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_optim_ps', 'C:\Users\magol001\OneDrive - WageningenUR\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\parspace\calc_optim_ps.m', 178)" style="font-weight:bold">calc_optim_ps</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - WageningenUR\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\parspace\calc_optim_ps.m',178,0)">line 178</a>)
+[minmax,mll,stats,pmat_print,pmat] = calc_parspace(pmat,opt_optim,SETTINGS_OPTIM);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_optim', 'C:\Users\magol001\OneDrive - WageningenUR\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\calc_optim.m', 119)" style="font-weight:bold">calc_optim</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - WageningenUR\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\calc_optim.m',119,0)">line 119</a>)
+        [pmat,pmat_print,FVAL,names_out] = calc_optim_ps(pmat,opt_optim);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('byom_GUTS_FULL_T1_FPF', 'C:\Users\magol001\OneDrive - WageningenUR\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T1\FPF\byom_GUTS_FULL_T1_FPF.m', 243)" style="font-weight:bold">byom_GUTS_FULL_T1_FPF</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - WageningenUR\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T1\FPF\byom_GUTS_FULL_T1_FPF.m',243,0)">line 243</a>)
+par_out = calc_optim(par,opt_optim); % start the optimisation
+} 
+ 
+Settings for parameter search ranges:
+=====================================================================
+ku    fixed :      1.313              fit: 0
+ke    fixed :     0.1353              fit: 0
+T_A_tk fixed :       9243              fit: 0
+kr    bounds:      1e-06 -         10 fit: 1 (log)
+mi    bounds:          0 -       1000 fit: 1 (norm)
+hb    bounds:          0 -         10 fit: 1 (norm)
+bi    bounds:      1e-06 -         10 fit: 1 (log)
+Fs    fixed :       7.29              fit: 0
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) 2217.2948
+Starting round 2, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 1 sets within total CI and 1 within inner. Best fit: 575.5052
+Starting round 3, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 2 sets within total CI and 2 within inner. Best fit: 575.5052
+Starting round 4, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 3 sets within total CI and 3 within inner. Best fit: 575.5052
+Starting round 5, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 4 sets within total CI and 4 within inner. Best fit: 575.5052
+Starting round 6, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 5 sets within total CI and 5 within inner. Best fit: 575.5052
+Starting round 7, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 8 sets within total CI and 6 within inner. Best fit: 575.5052
+Starting round 8, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 1 sets within total CI and 1 within inner. Best fit: 560.598
+Starting round 9, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 3 sets within total CI and 2 within inner. Best fit: 560.5591
+Starting round 10, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 4 sets within total CI and 3 within inner. Best fit: 560.5591
+Starting round 11, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 12 sets within total CI and 9 within inner. Best fit: 560.5591
+Starting round 12, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 24 sets within total CI and 18 within inner. Best fit: 560.5591
+ 
+We have now done 12 rounds without reaching the stopping criterion ... we stop here!
+  Finished sampling, running a simplex optimisation ...
+  Status: 25 sets within total CI and 19 within inner. Best fit: 560.5591
+Starting round 13, creating the profile likelihoods for each parameter
+  Extending profile for kr to lower parameter values
+  Extending profile for kr to higher parameter values
+  Extending profile for mi to lower parameter values
+  Extending profile for mi to higher parameter values
+  Extending profile for bi to lower parameter values
+  Extending profile for bi to higher parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 26 sets within total CI and 20 within inner. Best fit: 560.5591
+  Profiling has led to a new optimum, which left insufficient sets in the inner rim: extra sampling rounds will be started.
+Starting round 14, (extra 1) refining a selection of 854 parameter sets, with 4 tries each
+  Status: 3442 sets within total CI and 2476 within inner. Best fit: 560.5591
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 4213 sets in joint CI and 3016 in inner CI.
+   Propagation set: 457 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+kr    best:      1.714 (    0.3259  -     10.00*) fit: 1 (log)
+mi    best:      69.03 (     39.14  -     100.6 ) fit: 1 (norm)
+hb    best:   0.003407 (  0.002510  -  0.004493 ) fit: 1 (norm)
+bi    best:  0.0001396 ( 0.0001019  - 0.0001874 ) fit: 1 (log)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_GUTS_FULL_T1_FPF 
+   Analysis date : 28-Jul-2022 (03:07) 
+   Data entered  :
+     data state 1(1): 11x6, survival data. Weight: 1.
+     data state 1(2): 11x6, survival data. Weight: 1.
+     data state 1(3): 11x6, survival data. Weight: 1.
+     data state 2(1): 0x0, no data. Weight: 1.
+     data state 2(2): 0x0, no data. Weight: 1.
+     data state 2(3): 0x0, no data. Weight: 1.
+     data state 3(1): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(2): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(3): 1x6, continuous data, no transf. Weight: 0.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value 560.56 (AIC=1129.12). 
+=================================================================================
+ku          1.313 (fit: 0, initial: NaN) 
+ke         0.1353 (fit: 0, initial: NaN) 
+T_A_tk       9243 (fit: 0, initial: NaN) 
+kr          1.714 (fit: 1, initial: NaN) 
+mi          69.03 (fit: 1, initial: NaN) 
+hb       0.003407 (fit: 1, initial: NaN) 
+bi      0.0001396 (fit: 1, initial: NaN) 
+Fs           7.29 (fit: 0, initial: NaN) 
+=================================================================================
+Parameters kr and bi are fitted on log-scale.
+=================================================================================
+Time required: 37 hours, 0 min, 15.0 secs
