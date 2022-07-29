@@ -411,3 +411,102 @@ Fs           7.29 (fit: 0, initial: NaN)
 Parameters kr and bi are fitted on log-scale.
 =================================================================================
 Time required: 37 hours, 0 min, 15.0 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ku    fixed :      1.313              fit: 0
+ke    fixed :     0.1353              fit: 0
+T_A_tk fixed :       9243              fit: 0
+kr    bounds:      1e-06 -         10 fit: 1 (log)
+mi    bounds:          0 -       1000 fit: 1 (norm)
+hb    bounds:          0 -         10 fit: 1 (norm)
+bi    fixed :  0.0001816              fit: 0
+Fs    bounds:          1 -        100 fit: 1 (norm)
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) 2224.1569
+Starting round 2, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 1 sets within total CI and 1 within inner. Best fit: 560.5041
+Starting round 3, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 2 sets within total CI and 2 within inner. Best fit: 559.6794
+Starting round 4, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 3 sets within total CI and 2 within inner. Best fit: 558.3597
+Starting round 5, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 4 sets within total CI and 3 within inner. Best fit: 558.3582
+Starting round 6, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 5 sets within total CI and 4 within inner. Best fit: 558.3582
+Starting round 7, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 7 sets within total CI and 5 within inner. Best fit: 558.3582
+Starting round 8, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 11 sets within total CI and 8 within inner. Best fit: 558.3582
+Starting round 9, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 28 sets within total CI and 14 within inner. Best fit: 558.3582
+Starting round 10, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 43 sets within total CI and 20 within inner. Best fit: 558.3582
+Starting round 11, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 80 sets within total CI and 37 within inner. Best fit: 558.3582
+Starting round 12, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 146 sets within total CI and 68 within inner. Best fit: 558.3582
+ 
+We have now done 12 rounds without reaching the stopping criterion ... we stop here!
+  Finished sampling, running a simplex optimisation ...
+  Status: 147 sets within total CI and 69 within inner. Best fit: 558.3582
+Starting round 13, creating the profile likelihoods for each parameter
+  Extending profile for kr to lower parameter values
+  Extending profile for kr to higher parameter values
+  Extending profile for mi to lower parameter values
+  Extending profile for mi to higher parameter values
+  Extending profile for Fs to lower parameter values
+  Extending profile for Fs to higher parameter values
+  Status: 147 sets within total CI and 69 within inner. Best fit: 558.3582
+  Profiling has led to a new optimum, which left insufficient sets in the inner rim: extra sampling rounds will be started.
+Starting round 14, (extra 1) refining a selection of 517 parameter sets, with 6 tries each
+  Status: 3249 sets within total CI and 1335 within inner. Best fit: 558.3582
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 3773 sets in joint CI and 1555 in inner CI.
+   Propagation set: 469 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+kr    best:    0.08154 (  0.005968  -    0.2030 ) fit: 1 (log)
+mi    best:      284.3 (     37.86  -     415.4 ) fit: 1 (norm)
+hb    best:   0.003126 (  0.002174  -  0.004256 ) fit: 1 (norm)
+Fs    best:      7.594 (     4.648  -     15.30 ) fit: 1 (norm)
+==========================================================================
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_GUTS_FULL_T1_FPF 
+   Analysis date : 29-Jul-2022 (07:31) 
+   Data entered  :
+     data state 1(1): 11x6, survival data. Weight: 1.
+     data state 1(2): 11x6, survival data. Weight: 1.
+     data state 1(3): 11x6, survival data. Weight: 1.
+     data state 2(1): 0x0, no data. Weight: 1.
+     data state 2(2): 0x0, no data. Weight: 1.
+     data state 2(3): 0x0, no data. Weight: 1.
+     data state 3(1): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(2): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(3): 1x6, continuous data, no transf. Weight: 0.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value 558.36 (AIC=1124.72). 
+=================================================================================
+ku          1.313 (fit: 0, initial: NaN) 
+ke         0.1353 (fit: 0, initial: NaN) 
+T_A_tk       9243 (fit: 0, initial: NaN) 
+kr        0.08154 (fit: 1, initial: NaN) 
+mi          284.3 (fit: 1, initial: NaN) 
+hb       0.003126 (fit: 1, initial: NaN) 
+bi      0.0001816 (fit: 0, initial: NaN) 
+Fs          7.594 (fit: 1, initial: NaN) 
+=================================================================================
+Parameter kr is fitted on log-scale.
+=================================================================================
+Time required: 21 hours, 45 mins, 29.8 secs

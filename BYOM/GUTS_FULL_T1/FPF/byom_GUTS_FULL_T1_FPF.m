@@ -264,6 +264,13 @@ opt_conf.sens    = 0; % type of analysis 0) no sensitivities 1) corr. with state
 out_conf = calc_conf(par_out,opt_conf);   % calculate confidence intervals on model curves
 calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to plot fits with CIs
 
+%% TKTD plots
+opt_tktd.repls = 0;     % plot individual replicates (1) or means (0)
+opt_tktd.min   = 0;     % set to 1 to show a dotted line for the control (lowest) treatment
+
+plot_tktd(par_out,opt_tktd,opt_conf);
+
+
 % %% Calculate LCx versus time
 % % Here, the LCx (by default the LC50) is calculated at several time points.
 % % LCx values are also printed on screen. If a sample from parameter space
