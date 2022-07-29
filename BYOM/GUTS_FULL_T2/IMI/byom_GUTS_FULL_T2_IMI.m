@@ -9,6 +9,9 @@
 % Date: Mai 2021
 % Model extended to use datasets at different temperatures (see derivatives).
 %
+% Date: 28.07.2022
+% Model changed to be used by BYOMv.6.2 and added biotransformation 
+%
 % BYOM is a General framework for simulating model systems. The files in
 % this directory use the ODE solver only, and therefore <simplefun.html
 % simplefun.m> will be missing.
@@ -30,7 +33,6 @@
 clear, clear global % clear the workspace and globals
 global DATA W X0mat % make the data set and initial states global variables
 global glo          % allow for global parameters in structure glo
-global pri zvd      % global structures for optional priors and zero-variate data
 diary off           % turn of the diary function (if it is accidentaly on)
 set(0,'DefaultFigureWindowStyle','docked'); % collect all figure into one window with tab controls
 % set(0,'DefaultFigureWindowStyle','normal'); % separate figure windows
@@ -178,15 +180,26 @@ glo.fastrep = 0; % set to 1 to assume fast damage repair (death is driven by Ci)
 
 % start values for SD
 % syntax: par.name = [startvalue fit(0/1) minval maxval optional:log/normal scale (0/1)];
-par.ku    = [3.213    0 1e-3  10 1];  % uptake rate constant, L/kg/d
-par.ke    = [0.1524  0 1e-3  10 1]; % elimination rate constant (d-1)
-par.T_A_tk = [2818 0 1000 20000 1];  % Arrhenius temperature for TK rates, Kelvin (startvalue from AmP = 10000) 
-par.kr     = [     0.001  1      0.001         10 0]; 
-par.mi     = [    12.72  1          0      1e+06 1]; 
-par.hb     = [ 0.01217 1          0      1e+06 1]; 
-par.bi     = [     0.002  1      1e-06      1e+06 0]; 
-par.Fs     = [       100.0  1          1        100 1]; 
-par.T_A_td = [     1.178e+04  1       1000      20000 1]; 
+% TK parameters (fixed)
+par.ke     = [0.1397   0 1e-6 10 0];  % elimination rate constant, d-1
+par.ku     = [3.250    0 0.01 10 0];  % uptake rate constant, L/kg/d
+par.km     = [0.02172  0 1e-4 10 0];  % formation rate of the metabolite
+%par.kem    = [0.4884   0 1e-4 10 0];  % elimination rate of the metabolite
+par.T_A_tk = [3044     0 0.01 2e4 1];  % Arrhenius temperature, Kelvin
+% TD parameter starts for SD
+par.kr     = [0.001      1 1e-3  10  0]; % damage repair rate constant (d-1)
+par.mi     = [12.45      1 1e-6  1e3 0]; % median threshold for survival (nmol/kg)
+par.hb     = [0.003221   1    0  10  1]; % background hazard rate (d-1)
+par.bi     = [2e-3       1 1e-6  10  0]; % killing rate (kg/nmol/d) (SD and mixed)
+par.Fs     = [42.99      1    1  100 1]; % fraction spread of threshold distribution (-) (IT and mixed)
+par.T_A_td = [1.178e+04  1  100  2e4 1]; % Arrhenius temperature for TD parameter, Kelvin
+% % TD parameter starts for IT
+% par.kr     = [0.001    1 1e-3 10  0]; % damage repair rate constant (d-1)
+% par.mi     = [12.45    1 1e-6 1e3 0]; % median threshold for survival (nmol/kg)
+% par.hb     = [0.003221 1    0 10  1]; % background hazard rate (d-1)
+% par.bi     = [2e-3     1 1e-6 1e6 0]; % killing rate (kg/nmol/d) (SD and mixed)
+% par.Fs     = [42.99    1    1 100 1]; % fraction spread of threshold distribution (-) (IT and mixed)
+% par.T_A_td = [1.178e+04  1  100  2e4 1]; % Arrhenius temperature for TD parameter, Kelvin
 
 switch glo.sel % make sure that right parameters are fitted
     case 1 % SD

@@ -32,10 +32,11 @@
 
 %% Start
 
-function [Xout,TE] = call_deri(t,par,X0v)
+function [Xout,TE,Xout2,zvd] = call_deri(t,par,X0v,glo)
 
-global glo   % allow for global parameters in structure glo
-global zvd   % global structure for optional zero-variate data
+% These outputs need to be defined, even if they are not used
+Xout2    = []; % additional uni-variate output, predefine as empty
+zvd      = []; % additional zero-variate output, predefine as empty
 
 %% Initial settings
 % This part extracts optional settings for the ODE solver that can be set
@@ -227,7 +228,7 @@ end
 mi   = par.mi(1);             % median of threshold distribution
 bi   = par.bi(1);             % killing rate
 Fs   = max(1+1e-6,par.Fs(1)); % fraction spread of the threshold distribution
-
+beta = log(39)/log(Fs);       % shape parameter for logistic from Fs
 S    = Xout(:,glo.locS);      % take background survival from the model
 Di   = Xout(:,glo.locD);      % take the correct state variable for scaled damage
 T_A_td  = par.T_A_td(1);      % Arrhenius temperature, Kelvin
@@ -241,17 +242,15 @@ exp_temp = glo.Temp_scen(2,c == glo.Temp_scen(1,:));
 
 % Temperature correction for rates
 bi_T = bi * exp( (T_A_td / ref_temp) - (T_A_td / exp_temp) );
-mi_T = mi * exp( (T_A_td / ref_temp) - (T_A_td / exp_temp) );
-Fs_T = Fs * exp( (T_A_td / ref_temp) - (T_A_td / exp_temp) );
-beta = log(39)/log(Fs_T);       % shape parameter for logistic from Fs
+
 switch glo.sel
     case 1 % stochastic death
-        haz    = bi_T * max(0,Di-mi_T);          % calculate hazard for each NEC
+        haz    = bi_T * max(0,Di-mi);          % calculate hazard for each NEC
         cumhaz = cumtrapz(tout,haz);            % integrate the hazard rate numerically
         S      = S .* min(1,exp(-1*cumhaz)); % calculate survival probability, incl. background
     
     case 2 % individual tolerance, log-logistic distribution is used
-        mi_T = max(mi_T,1e-20); % make sure that the threshold is not zero ...
+        mi = max(mi,1e-20); % make sure that the threshold is not zero ...
         % New method to make sure that Di does not decrease over time (dead
         % animals dont become alive). This increases speed, especially when
         % there is very little decrease in Di.
@@ -261,7 +260,7 @@ switch glo.sel
             maxDi(ind:end) = max(maxDi(ind:end),maxDi(ind-1)); % and replace every later time with max of that and previous point
             ind = find([0;diff(maxDi)]<0,1,'first'); % any decrease left?
         end
-        S = S .* (1 ./ (1+(maxDi/mi_T).^beta)); % survival probability
+        S = S .* (1 ./ (1+(maxDi/mi).^beta)); % survival probability
         % the survival due to the chemical is multiplied with the background
         % survival (calculated in derivatives), assuming logistic distrib.
 
@@ -271,8 +270,8 @@ switch glo.sel
         % different NECs is calculated below.
         n          = 200; % number of slices from the threshold distribution
         Fs2        = 999^(1/beta); % fraction spread for 99.9% of the distribution
-        z_range    = linspace(mi_T/(1.5*Fs2),mi_T*Fs2,n); % range of NECs to cover 99.9%
-        prob_range = ((beta/mi_T)*(z_range/mi_T).^(beta-1)) ./ ((1+(z_range/mi_T).^beta).^2); % pdf for the log-logistic (Wikipedia)
+        z_range    = linspace(mi/(1.5*Fs2),mi*Fs2,n); % range of NECs to cover 99.9%
+        prob_range = ((beta/mi)*(z_range/mi).^(beta-1)) ./ ((1+(z_range/mi).^beta).^2); % pdf for the log-logistic (Wikipedia)
         prob_range = prob_range / sum(prob_range); % normalise the densities to exactly one
         S1         = zeros(length(tout),1); % initialise the survival probability over time with zeros
         Di = Xout(:,glo.locD);   % take the correct state variable for scaled damage

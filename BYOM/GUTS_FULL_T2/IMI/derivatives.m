@@ -46,13 +46,16 @@ Di = X(glo.locD); % state is the scaled damage at previous time point
 
 ku   = par.ku(1);   % uptake rate constant, L * kg-1 d-1
 ke   = par.ke(1);   % elimination rate constant
+km   = par.km(1);     % formation rate of the metabolite
+%kem  = par.kem(1);    % elimination rate of the metabolite
+
 kr   = par.kr(1);   % damage repair rate constant
 % mi   = par.mi(1);   % median of threshold distribution (used in call_deri)
 % bi   = par.bi(1);   % killing rate (used in call_deri)
 % Fs   = par.Fs(1);   % fraction spread of threshold distribution, (-) (used in call_deri)
 hb   = par.hb(1);   % background hazard rate
-T_A_tk  = par.T_A_tk(1);  % Arrhenius temperature, Kelvin
-T_A_td  = par.T_A_td(1);  % Arrhenius temperature, Kelvin
+T_A_tk  = par.T_A_tk(1);  % Arrhenius temperature for TK parameter, Kelvin
+T_A_td  = par.T_A_td(1);  % Arrhenius temperature for TD parameter, Kelvin
 
 % Unpack the experimental temperature based on the scenario
 ref_temp = 293.15; % reference temperature in Kelvin (20 degrees celsius)
@@ -64,6 +67,8 @@ exp_temp = glo.Temp_scen(2,c == glo.Temp_scen(1,:));
 % Temperature correction for rates
 ku_T = ku * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp) );
 ke_T = ke * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp) );
+km_T  = km * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp) );
+%kem_T = kem * exp( (T_A_tk / ref_temp) - (T_A_tk / exp_temp) );
 
 kr_T = kr * exp( (T_A_td / ref_temp) - (T_A_td / exp_temp) );
 hb_T = hb * exp( (T_A_td / ref_temp) - (T_A_td / exp_temp) );
@@ -83,7 +88,8 @@ end
 % This is the actual model, specified as a system of ODEs.
 
 % dCi = ke * (Kiw * c - Ci); % first order bioconcentration
-dCi = ku_T * c - ke_T * Ci ; % alternative writing of quation of first order bioconcentration
+dCi = (ku_T * c - ke_T * Ci) - km_T * Ci ; % AMD: alternative writing of quation of first order bioconcentration
+%dCm = km_T * Ci - kem_T * Cm;   % first-order metabolism
 
 if glo.fastrep == 1 % is we assume that damage repair is infinitely fast
     dDi = dCi; % same change in damage as in internal conc.
