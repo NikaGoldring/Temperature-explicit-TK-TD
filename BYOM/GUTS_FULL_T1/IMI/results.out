@@ -160,3 +160,92 @@ Fs    bounds:          1 -        100 fit: 1 (norm)
 =====================================================================
  
 Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) 1936.8391
+Starting round 2, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 1 sets within total CI and 1 within inner. Best fit: 605.6342
+Starting round 3, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 2 sets within total CI and 2 within inner. Best fit: 605.6319
+Starting round 4, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 3 sets within total CI and 3 within inner. Best fit: 605.6319
+Starting round 5, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 7 sets within total CI and 4 within inner. Best fit: 605.6319
+Starting round 6, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 14 sets within total CI and 6 within inner. Best fit: 605.6319
+Starting round 7, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 26 sets within total CI and 13 within inner. Best fit: 605.6319
+Starting round 8, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 47 sets within total CI and 17 within inner. Best fit: 605.6319
+Starting round 9, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 82 sets within total CI and 29 within inner. Best fit: 605.6319
+Starting round 10, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 151 sets within total CI and 54 within inner. Best fit: 605.6319
+Starting round 11, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 225 sets within total CI and 83 within inner. Best fit: 605.6319
+Starting round 12, refining a selection of 241 parameter sets, with 20 tries each
+  Status: 276 sets within total CI and 106 within inner. Best fit: 605.6319
+ 
+We have now done 12 rounds without reaching the stopping criterion ... we stop here!
+  Finished sampling, running a simplex optimisation ...
+  Status: 277 sets within total CI and 107 within inner. Best fit: 605.6319
+Starting round 13, creating the profile likelihoods for each parameter
+  Extending profile for kr to lower parameter values
+  Extending profile for kr to higher parameter values
+  Extending profile for mi to lower parameter values
+  Extending profile for mi to higher parameter values
+  Extending profile for Fs to lower parameter values
+  Extending profile for Fs to higher parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 278 sets within total CI and 108 within inner. Best fit: 605.6319
+  Profiling has led to a new optimum, which left insufficient sets in the inner rim: extra sampling rounds will be started.
+Starting round 14, (extra 1) refining a selection of 259 parameter sets, with 13 tries each
+  Status: 3645 sets within total CI and 2487 within inner. Best fit: 605.6319
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 3898 sets in joint CI and 2692 in inner CI.
+   Propagation set: 732 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+kr    best:   0.001000 (  0.001000* -   0.01692 ) fit: 1 (log)
+mi    best:      12.02 (     8.433  -     182.5 ) fit: 1 (log)
+hb    best:   0.003234 (  0.002063  -  0.004672 ) fit: 1 (norm)
+Fs    best:      42.19 (     18.52  -     100.0*) fit: 1 (norm)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_GUTS_FULL_T1_IMI 
+   Analysis date : 30-Jul-2022 (03:55) 
+   Data entered  :
+     data state 1(1): 12x6, survival data. Weight: 1.
+     data state 1(2): 12x6, survival data. Weight: 1.
+     data state 1(3): 12x6, survival data. Weight: 1.
+     data state 2(1): 0x0, no data. Weight: 1.
+     data state 2(2): 0x0, no data. Weight: 1.
+     data state 2(3): 0x0, no data. Weight: 1.
+     data state 3(1): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(2): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(3): 1x6, continuous data, no transf. Weight: 0.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value 605.63 (AIC=1219.26). 
+=================================================================================
+ke         0.1397 (fit: 0, initial: NaN) 
+ku           3.25 (fit: 0, initial: NaN) 
+km        0.02172 (fit: 0, initial: NaN) 
+T_A_tk       3044 (fit: 0, initial: NaN) 
+kr       0.001000 (fit: 1, initial: NaN) 
+mi          12.02 (fit: 1, initial: NaN) 
+hb       0.003234 (fit: 1, initial: NaN) 
+bi          0.002 (fit: 0, initial: NaN) 
+Fs          42.19 (fit: 1, initial: NaN) 
+=================================================================================
+Parameters kr and mi are fitted on log-scale.
+=================================================================================
+Time required: 17 hours, 28 mins, 55.3 secs
