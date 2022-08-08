@@ -187,19 +187,19 @@ par.km     = [0.02172  0 1e-4 10 0];  % formation rate of the metabolite
 %par.kem    = [0.4884   0 1e-4 10 0];  % elimination rate of the metabolite
 par.T_A_tk = [3044     0 0.01 2e4 1];  % Arrhenius temperature, Kelvin
 % % TD parameter starts for SD
-% par.kr     = [0.001      1 1e-3  10  0]; % damage repair rate constant (d-1)
-% par.mi     = [12.45      1 1e-6  1e3 0]; % median threshold for survival (nmol/kg)
-% par.hb     = [0.003221   1    0  10  1]; % background hazard rate (d-1)
-% par.bi     = [2e-3       1 1e-6  10  0]; % killing rate (kg/nmol/d) (SD and mixed)
-% par.Fs     = [42.99      1    1  100 1]; % fraction spread of threshold distribution (-) (IT and mixed)
-% par.T_A_td = [1.178e+04  1  100  2e4 1]; % Arrhenius temperature for TD parameter, Kelvin
+% par.kr     = [0.252  1  1e-3  10   0]; % damage repair rate constant (d-1)
+% par.mi     = [0.001  1  1e-6  20   0]; % median threshold for survival (nmol/kg)
+% par.hb     = [0.009  1  1e-6  1    0]; % background hazard rate (d-1)
+% par.bi     = [2e-3   1  1e-6  1    0]; % killing rate (kg/nmol/d) (SD and mixed)
+% par.Fs     = [42.99  0  1     100  1]; % fraction spread of threshold distribution (-) (IT and mixed)
+% par.T_A_td = [8510   1  1000  2e4  1]; % Arrhenius temperature for TD parameter, Kelvin
 % TD parameter starts for IT
-par.kr     = [0.001    1 1e-3 10  0]; % damage repair rate constant (d-1)
-par.mi     = [12.45    1 1e-6 1e3 0]; % median threshold for survival (nmol/kg)
-par.hb     = [0.003221 1    0 10  1]; % background hazard rate (d-1)
-par.bi     = [2e-3     1 1e-6 1e6 0]; % killing rate (kg/nmol/d) (SD and mixed)
-par.Fs     = [42.99    1    1 100 1]; % fraction spread of threshold distribution (-) (IT and mixed)
-par.T_A_td = [1.178e+04  1  100  2e4 1]; % Arrhenius temperature for TD parameter, Kelvin
+par.kr     = [0.001    1 1e-6 1   0]; % damage repair rate constant (d-1)
+par.mi     = [3.436    1 0.01 1e3 0]; % median threshold for survival (nmol/kg)
+par.hb     = [0.01095  1 1e-6 1   0]; % background hazard rate (d-1)
+par.bi     = [2e-3     1 1e-6 1   0]; % killing rate (kg/nmol/d) (SD and mixed)
+par.Fs     = [40.95    1    1 1e6 1]; % fraction spread of threshold distribution (-) (IT and mixed)
+par.T_A_td = [12150    1 1000 2e4 1]; % Arrhenius temperature for TD parameter, Kelvin
 
 switch glo.sel % make sure that right parameters are fitted
     case 1 % SD

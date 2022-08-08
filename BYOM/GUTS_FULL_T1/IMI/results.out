@@ -249,3 +249,111 @@ Fs          42.19 (fit: 1, initial: NaN)
 Parameters kr and mi are fitted on log-scale.
 =================================================================================
 Time required: 17 hours, 28 mins, 55.3 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    fixed :     0.1397              fit: 0
+ku    fixed :       3.25              fit: 0
+km    fixed :    0.02172              fit: 0
+T_A_tk fixed :       3044              fit: 0
+kr    bounds:      0.001 -         10 fit: 1 (log)
+mi    bounds:      0.001 -         20 fit: 1 (log)
+hb    bounds:      0.001 -         10 fit: 1 (log)
+bi    bounds:      1e-06 -      0.002 fit: 1 (log)
+Fs    fixed :      42.99              fit: 0
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) 605.7615
+Starting round 2, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 396 sets within total CI and 80 within inner. Best fit: 605.1985
+Starting round 3, refining a selection of 1109 parameter sets, with 6 tries each
+  Status: 1509 sets within total CI and 344 within inner. Best fit: 605.1985
+  Finished sampling, running a simplex optimisation ...
+  Status: 1510 sets within total CI and 344 within inner. Best fit: 605.198
+Starting round 4, creating the profile likelihoods for each parameter
+  Extending profile for kr to lower parameter values
+  Extending profile for mi to lower parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 1511 sets within total CI and 345 within inner. Best fit: 605.198
+  Profiling has detected gaps between profile and sample, which requires extra sampling rounds.
+Starting round 5, (extra 1) refining a selection of 75 parameter sets, with 40 tries each
+  Status: 4511 sets within total CI and 3105 within inner. Best fit: 605.198
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 4710 sets in joint CI and 3277 in inner CI.
+   Propagation set: 374 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+kr    best:    0.06908 (  0.002073  -     10.00*) fit: 1 (log)
+mi    best:   0.001000 (  0.001000* -     9.046 ) fit: 1 (log)
+hb    best:   0.003878 (  0.002749  -  0.005217 ) fit: 1 (log)
+bi    best:  0.0001275 ( 5.507e-05  -  0.002000*) fit: 1 (log)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_GUTS_FULL_T1_IMI 
+   Analysis date : 03-Aug-2022 (03:44) 
+   Data entered  :
+     data state 1(1): 12x6, survival data. Weight: 1.
+     data state 1(2): 12x6, survival data. Weight: 1.
+     data state 1(3): 12x6, survival data. Weight: 1.
+     data state 2(1): 0x0, no data. Weight: 1.
+     data state 2(2): 0x0, no data. Weight: 1.
+     data state 2(3): 0x0, no data. Weight: 1.
+     data state 3(1): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(2): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(3): 1x6, continuous data, no transf. Weight: 0.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value 605.20 (AIC=1218.40). 
+=================================================================================
+ke         0.1397 (fit: 0, initial: NaN) 
+ku           3.25 (fit: 0, initial: NaN) 
+km        0.02172 (fit: 0, initial: NaN) 
+T_A_tk       3044 (fit: 0, initial: NaN) 
+kr        0.06908 (fit: 1, initial: NaN) 
+mi       0.001000 (fit: 1, initial: NaN) 
+hb       0.003878 (fit: 1, initial: NaN) 
+bi      0.0001275 (fit: 1, initial: NaN) 
+Fs          42.99 (fit: 0, initial: NaN) 
+=================================================================================
+Parameters kr, mi, hb and bi are fitted on log-scale.
+=================================================================================
+Time required: 10 hours, 18 mins, 44.4 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    fixed :     0.1397              fit: 0
+ku    fixed :       3.25              fit: 0
+km    fixed :    0.02172              fit: 0
+T_A_tk fixed :       3044              fit: 0
+kr    bounds:      0.001 -          1 fit: 1 (log)
+mi    bounds:          1 -       1000 fit: 1 (log)
+hb    bounds:      1e-06 -          1 fit: 1 (log)
+bi    fixed :      0.002              fit: 0
+Fs    bounds:          1 -       1000 fit: 1 (norm)
+=====================================================================
+ 
+Starting round 1 with initial grid of 4096 parameter sets
+  Status: best fit so far is (minloglik) 609.2171
+Starting round 2, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 21 sets within total CI and 2 within inner. Best fit: 605.6352
+Starting round 3, refining a selection of 200 parameter sets, with 35 tries each
+  Status: 257 sets within total CI and 29 within inner. Best fit: 605.6319
+Starting round 4, refining a selection of 836 parameter sets, with 8 tries each
+  Status: 1204 sets within total CI and 179 within inner. Best fit: 605.6319
+  Next round will focus on inner rim (outer rim has enough points)
+Starting round 5, refining a selection of 380 parameter sets, with 7 tries each
+  Status: 2815 sets within total CI and 680 within inner. Best fit: 605.6319
+  Finished sampling, running a simplex optimisation ...
+  Status: 2816 sets within total CI and 681 within inner. Best fit: 605.6319
+Starting round 6, creating the profile likelihoods for each parameter

@@ -187,17 +187,17 @@ par.km     = [0.02172  0 1e-4 10 0];  % formation rate of the metabolite
 %par.kem    = [0.4884   0 1e-4 10 0];  % elimination rate of the metabolite
 par.T_A_tk = [3044     0 0.01 2e4 1];  % Arrhenius temperature, Kelvin
 % % TD parameter starts for SD
-% par.kr    = [0.001    1 1e-3  10  0]; % damage repair rate constant (d-1)
-% par.mi    = [12.45    1 1e-6  1e3 0]; % median threshold for survival (nmol/kg)
-% par.hb    = [0.003221 1    0  10  1]; % background hazard rate (d-1)
-% par.bi    = [2e-3     1 1e-6  10  0]; % killing rate (kg/nmol/d) (SD and mixed)
-% par.Fs    = [42.99    1    1  100 1]; % fraction spread of threshold distribution (-) (IT and mixed)
+% par.kr    = [0.069  1  1e-3  10    0]; % damage repair rate constant (d-1)
+% par.mi    = [0.001  1  1e-3  20    0]; % median threshold for survival (nmol/kg)
+% par.hb    = [0.004  1  1e-3  10    0]; % background hazard rate (d-1)
+% par.bi    = [1e-3   1  1e-6  2e-3  0]; % killing rate (kg/nmol/d) (SD and mixed)
+% par.Fs    = [42.99  0  1     100   1]; % fraction spread of threshold distribution (-) (IT and mixed)
 % TD parameter starts for IT
-par.kr    = [0.001    1 1e-3 10  0]; % damage repair rate constant (d-1)
-par.mi    = [12.45    1 1e-6 1e3 0]; % median threshold for survival (nmol/kg)
-par.hb    = [0.003221 1    0 10  1]; % background hazard rate (d-1)
+par.kr    = [0.001    1 1e-3 1   0]; % damage repair rate constant (d-1)
+par.mi    = [12.02    1 1    1e3 0]; % median threshold for survival (nmol/kg)
+par.hb    = [0.003234 1 1e-6 1   0]; % background hazard rate (d-1)
 par.bi    = [2e-3     1 1e-6 1e6 0]; % killing rate (kg/nmol/d) (SD and mixed)
-par.Fs    = [42.99    1    1 100 1]; % fraction spread of threshold distribution (-) (IT and mixed)
+par.Fs    = [42.19    1    1 1e3 1]; % fraction spread of threshold distribution (-) (IT and mixed)
 
 switch glo.sel % make sure that right parameters are fitted
     case 1 % SD
