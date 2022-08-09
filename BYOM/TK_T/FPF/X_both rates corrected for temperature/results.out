@@ -84,3 +84,79 @@ Final values for zero-variate data points included:
 BCF         9.910 (data point: 10, sd: 0.5) 
 =================================================================================
 Time required: 11 mins, 5.9 secs
+ 
+Settings for parameter search ranges:
+=====================================================================
+ke    bounds:       0.01 -         10 fit: 1 (norm)
+ku    bounds:       0.01 -         10 fit: 1 (norm)
+T_A   bounds:       0.01 -      2e+04 fit: 1 (norm)
+=====================================================================
+ 
+Starting round 1 with initial grid of 512 parameter sets
+  Status: best fit so far is (minloglik) 303.6073
+Starting round 2, refining a selection of 200 parameter sets, with 25 tries each
+  Status: 1 sets within total CI and 1 within inner. Best fit: 209.9801
+Starting round 3, refining a selection of 200 parameter sets, with 25 tries each
+  Status: 3 sets within total CI and 2 within inner. Best fit: 209.5828
+Starting round 4, refining a selection of 200 parameter sets, with 25 tries each
+  Status: 4 sets within total CI and 3 within inner. Best fit: 209.5808
+Starting round 5, refining a selection of 200 parameter sets, with 25 tries each
+  Status: 8 sets within total CI and 6 within inner. Best fit: 209.5806
+Starting round 6, refining a selection of 200 parameter sets, with 25 tries each
+  Status: 35 sets within total CI and 14 within inner. Best fit: 209.5806
+Starting round 7, refining a selection of 200 parameter sets, with 25 tries each
+  Status: 181 sets within total CI and 63 within inner. Best fit: 209.5806
+Starting round 8, refining a selection of 216 parameter sets, with 20 tries each
+  Status: 558 sets within total CI and 196 within inner. Best fit: 209.5806
+  Next round will focus on inner rim (outer rim has enough points)
+Starting round 9, refining a selection of 397 parameter sets, with 5 tries each
+  Status: 759 sets within total CI and 272 within inner. Best fit: 209.5806
+  Finished sampling, running a simplex optimisation ...
+  Status: 760 sets within total CI and 273 within inner. Best fit: 209.5806
+Starting round 10, creating the profile likelihoods for each parameter
+  Extending profile for T_A to lower parameter values
+  Finished profiling, running a simplex optimisation on the best fit set found ...
+  Status: 761 sets within total CI and 274 within inner. Best fit: 209.5803
+  Profiling has detected gaps between profile and sample, which requires extra sampling rounds.
+Starting round 11, (extra 1) refining a selection of 30 parameter sets, with 40 tries each
+  Status: 1961 sets within total CI and 874 within inner. Best fit: 209.5803
+Starting round 12, (extra 2) refining a selection of 2 parameter sets, with 40 tries each
+  Status: 2041 sets within total CI and 954 within inner. Best fit: 209.5803
+ 
+=================================================================================
+Results of the parameter-space exploration
+=================================================================================
+   Sample: 2192 sets in joint CI and 1055 in inner CI.
+   Propagation set: 343 sets will be used for error propagation.
+Best estimates and 95% CIs on fitted parameters
+Rough settings were used.
+  In almost all cases, this will be sufficient for reliable results.
+==========================================================================
+ke    best:     0.1410 (    0.1232  -    0.1605 ) fit: 1 (norm)
+ku    best:      1.397 (     1.289  -     1.485 ) fit: 1 (norm)
+T_A   best:    0.01000 (   0.01000* -     615.3 ) fit: 1 (norm)
+==========================================================================
+* edge of 95% parameter CI has run into a boundary
+  (this may also have affected CIs of other parameters)
+ 
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_TK_T_FPF 
+   Analysis date : 09-Aug-2022 (14:54) 
+   Data entered  :
+     data state 1(1): 6x3, continuous data, no transf.
+     data state 1(2): 6x3, continuous data, no transf.
+     data state 1(3): 6x3, continuous data, no transf.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value 209.58 (AIC=425.16). 
+=================================================================================
+ke         0.1410 (fit: 1, initial: NaN) 
+ku          1.397 (fit: 1, initial: NaN) 
+T_A       0.01000 (fit: 1, initial: NaN) 
+=================================================================================
+Final values for zero-variate data points included:
+BCF         9.910 (data point: 10, sd: 0.5) 
+=================================================================================
+Time required: 5 mins, 27.1 secs
