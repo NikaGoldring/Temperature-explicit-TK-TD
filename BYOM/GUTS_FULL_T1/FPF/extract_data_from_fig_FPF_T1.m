@@ -2,7 +2,7 @@ clear all;
 close all;
 
 %% Specify file for data extraction
-open('20220825_GUTS_T1_SD_FPF_15.fig') ; % choose corresponding file name of MATLAB figure
+open('20220810_GUTS_T1_IT_FPF_07.fig') ; % choose corresponding file name of MATLAB figure
 h = findobj(gcf, 'Type', 'line'); %Get model line data
 q = findobj(gcf, 'Type', 'ErrorBar');%Get data points and error bars
 
@@ -109,5 +109,5 @@ fig02(:,17) = DPydata1; % 1
 fig02(:,18) = DPydata03; % 0.3
 fig02(:,19) = DPydataC; % control
 % 
-dlmwrite('20220825_FPF_GUTS_SD_T1_model_15.txt', fig01, ','); %write dataframe in txt
-dlmwrite(['20220825_FPF_GUTS_SD_T1_data_15.txt'], fig02, ','); %write dataframe in txt
+dlmwrite('20220825_FPF_GUTS_IT_T1_model_07.txt', fig01, ','); %write dataframe in txt
+dlmwrite(['20220825_FPF_GUTS_IT_T1_data_07.txt'], fig02, ','); %write dataframe in txt
