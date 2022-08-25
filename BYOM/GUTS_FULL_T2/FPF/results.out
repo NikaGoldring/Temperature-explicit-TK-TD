@@ -95,3 +95,424 @@ T_A_td  1.131e+04 (fit: 1, initial: NaN)
 Parameters kr, mi and hb are fitted on log-scale.
 =================================================================================
 Time required: 22 hours, 58 mins, 46.4 secs
+=================================================================================
+Results of the parameter estimation with BYOM version 6.2 (27/06/2022)
+=================================================================================
+   Filename      : byom_GUTS_FULL_T2_FPF 
+   Analysis date : 15-Aug-2022 (02:05) 
+   Data entered  :
+     data state 1(1): 11x6, survival data. Weight: 1.
+     data state 1(2): 11x6, survival data. Weight: 1.
+     data state 1(3): 11x6, survival data. Weight: 1.
+     data state 2(1): 0x0, no data. Weight: 1.
+     data state 2(2): 0x0, no data. Weight: 1.
+     data state 2(3): 0x0, no data. Weight: 1.
+     data state 3(1): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(2): 1x6, continuous data, no transf. Weight: 0.
+     data state 3(3): 1x6, continuous data, no transf. Weight: 0.
+   Search method: Parameter-space explorer (see CIs above). 
+     The optimisation routine has converged to a solution
+     Minus log-likelihood has reached the value 545.70 (AIC=1101.41). 
+=================================================================================
+ku          1.313 (fit: 0, initial: NaN) 
+ke         0.1353 (fit: 0, initial: NaN) 
+T_A_tk       9243 (fit: 0, initial: NaN) 
+kr          8.372 (fit: 1, initial: NaN) 
+mi          81.91 (fit: 1, initial: NaN) 
+hb        0.01083 (fit: 1, initial: NaN) 
+bi      0.0005562 (fit: 1, initial: NaN) 
+Fs           7.29 (fit: 0, initial: NaN) 
+T_A_td  1.173e+04 (fit: 1, initial: NaN) 
+=================================================================================
+Parameters kr, hb and bi are fitted on log-scale.
+=================================================================================
+Time required: 401 hours, 27 mins, 1.8 secs
+[Warning: The parameter-space explorer is not thoroughly tested for more than 4 free parameters!] 
+ 
+Settings for parameter search ranges:
+=====================================================================
+ku    fixed :      1.313              fit: 0
+ke    fixed :     0.1353              fit: 0
+T_A_tk fixed :       9243              fit: 0
+kr    bounds:       0.01 -       1000 fit: 1 (log)
+mi    bounds:          0 -       1000 fit: 1 (norm)
+hb    bounds:      1e-06 -         10 fit: 1 (log)
+bi    bounds:      1e-06 -         10 fit: 1 (log)
+Fs    fixed :       7.29              fit: 0
+T_A_td bounds:          1 -      2e+04 fit: 1 (norm)
+=====================================================================
+Using latin-hypercube sampling in first round, instead of regular grid.
+ 
+Starting round 1 with initial grid of 10000 parameter sets
+{Operation terminated by user during <a href="matlab:matlab.internal.language.introspective.errorDocCallback('ode45', 'C:\Program Files\MATLAB\R2021b\toolbox\matlab\funfun\ode45.m', 290)" style="font-weight:bold">ode45</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2021b\toolbox\matlab\funfun\ode45.m',290,0)">line 290</a>)
+
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('call_deri', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T2\FPF\call_deri.m', 195)" style="font-weight:bold">call_deri</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T2\FPF\call_deri.m',195,0)">line 195</a>)
+                [tout_tmp,Xout_tmp,TE,~,~] = ode45(@derivatives,t_tmp,X0,options,par,c,glo);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('transfer', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\transfer.m', 91)" style="font-weight:bold">transfer</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\transfer.m',91,0)">line 91</a>)
+    [Xout,~,Xout2,zvd] = call_deri(ttot,par,[ctot(i);X0],glo); % use call_deri.m to provide the output per concentration
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_parspace', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\parspace\calc_parspace.m', 263)" style="font-weight:bold">calc_parspace</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\parspace\calc_parspace.m',263,0)">line 263</a>)
+    coll_all(i_t,end) = transfer(pfit,pmat); % calculate the min-log-likelihood for this parameter combination,
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_optim_ps', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\parspace\calc_optim_ps.m', 178)" style="font-weight:bold">calc_optim_ps</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\parspace\calc_optim_ps.m',178,0)">line 178</a>)
+[minmax,mll,stats,pmat_print,pmat] = calc_parspace(pmat,opt_optim,SETTINGS_OPTIM);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('calc_optim', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\calc_optim.m', 119)" style="font-weight:bold">calc_optim</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\engine\calc_optim.m',119,0)">line 119</a>)
+        [pmat,pmat_print,FVAL,names_out] = calc_optim_ps(pmat,opt_optim);
+
+In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('byom_GUTS_FULL_T2_FPF', 'C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T2\FPF\byom_GUTS_FULL_T2_FPF.m', 248)" style="font-weight:bold">byom_GUTS_FULL_T2_FPF</a> (<a href="matlab: opentoline('C:\Users\magol001\OneDrive - Wageningen University & Research\Git_AMD\Temperature-explicit-TK-TD\BYOM\GUTS_FULL_T2\FPF\byom_GUTS_FULL_T2_FPF.m',248,0)">line 248</a>)
+par_out = calc_optim(par,opt_optim); % start the optimisation
+} 
+byom_GUTS_FULL_T2_FPF
+ECx with CIs: 95% pred. likelihood, parspace explorer
+================================================================================
+time (days)    EC50 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0   3.82e+04 (  9.62e+03 -   1.23e+05) 
+2.0   6.22e+03 (  2.45e+03 -   1.66e+04) 
+3.0   2.31e+03 (  1.11e+03 -   5.30e+03) 
+4.0   1.19e+03 (      640. -   2.40e+03) 
+5.0       720. (      419. -   1.35e+03) 
+6.0       486. (      298. -       854.) 
+7.0       351. (      224. -       587.) 
+8.0       267. (      175. -       427.) 
+9.0       210. (      142. -       325.) 
+10.0       171. (      117. -       256.) 
+11.0       142. (      99.2 -       207.) 
+12.0       120. (      85.2 -       171.) 
+13.0       103. (      74.2 -       144.) 
+14.0       89.8 (      65.3 -       125.) 
+15.0       79.0 (      58.0 -       110.) 
+16.0       70.3 (      52.0 -       97.5) 
+17.0       63.0 (      47.0 -       87.3) 
+18.0       56.9 (      42.7 -       78.6) 
+19.0       51.8 (      39.0 -       71.3) 
+20.0       47.4 (      35.9 -       65.1) 
+21.0       43.6 (      33.2 -       59.7) 
+22.0       40.2 (      30.8 -       55.0) 
+23.0       37.3 (      28.7 -       51.0) 
+24.0       34.8 (      26.8 -       47.4) 
+25.0       32.5 (      25.2 -       44.2) 
+26.0       30.5 (      23.7 -       41.3) 
+27.0       28.7 (      22.4 -       38.8) 
+28.0       27.1 (      21.2 -       36.5) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000
+ECx with CIs: 95% pred. likelihood, parspace explorer
+================================================================================
+time (days)    EC10 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0   6.11e+03 (  1.58e+03 -   1.96e+04) 
+2.0   1.04e+03 (      429. -   2.76e+03) 
+3.0       402. (      206. -       917.) 
+4.0       214. (      124. -       431.) 
+5.0       135. (      84.4 -       245.) 
+6.0       94.2 (      62.2 -       156.) 
+7.0       70.3 (      48.4 -       108.) 
+8.0       55.1 (      39.1 -       79.7) 
+9.0       44.7 (      32.5 -       61.5) 
+10.0       37.3 (      27.7 -       49.4) 
+11.0       31.8 (      24.0 -       40.7) 
+12.0       27.6 (      21.1 -       34.9) 
+13.0       24.3 (      18.8 -       30.3) 
+14.0       21.6 (      17.0 -       26.8) 
+15.0       19.5 (      15.4 -       23.9) 
+16.0       17.7 (      14.1 -       21.6) 
+17.0       16.2 (      13.0 -       19.8) 
+18.0       14.9 (      12.1 -       18.2) 
+19.0       13.8 (      11.2 -       16.8) 
+20.0       12.9 (      10.4 -       15.6) 
+21.0       12.0 (      9.74 -       14.6) 
+22.0       11.3 (      9.15 -       13.6) 
+23.0       10.7 (      8.63 -       12.8) 
+24.0       10.1 (      8.16 -       12.1) 
+25.0       9.58 (      7.74 -       11.5) 
+26.0       9.12 (      7.36 -       10.9) 
+27.0       8.70 (      7.02 -       10.4) 
+28.0       8.32 (      6.71 -       9.99) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000
+ECx with CIs: 95% pred. likelihood, parspace explorer
+================================================================================
+time (days)    EC10 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0   2.41e+03 (      990. -   8.64e+03) 
+2.0       481. (      282. -   1.29e+03) 
+3.0       207. (      141. -       452.) 
+4.0       119. (      88.3 -       223.) 
+5.0       79.6 (      62.3 -       132.) 
+6.0       58.2 (      47.0 -       87.9) 
+7.0       45.2 (      37.1 -       63.3) 
+8.0       36.6 (      30.4 -       48.2) 
+9.0       30.6 (      25.5 -       38.2) 
+10.0       26.3 (      21.8 -       31.5) 
+11.0       22.9 (      19.0 -       26.9) 
+12.0       20.3 (      16.8 -       23.7) 
+13.0       18.3 (      15.1 -       21.2) 
+14.0       16.6 (      13.7 -       19.2) 
+15.0       15.2 (      12.5 -       17.6) 
+16.0       14.0 (      11.5 -       16.2) 
+17.0       13.0 (      10.7 -       15.1) 
+18.0       12.2 (      9.93 -       14.1) 
+19.0       11.4 (      9.31 -       13.3) 
+20.0       10.8 (      8.77 -       12.6) 
+21.0       10.2 (      8.29 -       11.9) 
+22.0       9.74 (      7.86 -       11.4) 
+23.0       9.30 (      7.49 -       10.9) 
+24.0       8.90 (      7.15 -       10.5) 
+25.0       8.54 (      6.85 -       10.1) 
+26.0       8.22 (      6.57 -       9.71) 
+27.0       7.93 (      6.29 -       9.38) 
+28.0       7.66 (      6.04 -       9.09) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000
+ECx with CIs: 95% pred. likelihood, parspace explorer
+================================================================================
+time (days)    EC50 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0   1.46e+04 (  5.77e+03 -   5.28e+04) 
+2.0   2.70e+03 (  1.48e+03 -   7.43e+03) 
+3.0   1.09e+03 (      680. -   2.46e+03) 
+4.0       591. (      397. -   1.16e+03) 
+5.0       374. (      263. -       657.) 
+6.0       261. (      190. -       420.) 
+7.0       194. (      145. -       291.) 
+8.0       151. (      115. -       214.) 
+9.0       121. (      94.3 -       164.) 
+10.0       100. (      79.2 -       131.) 
+11.0       84.8 (      67.7 -       109.) 
+12.0       72.9 (      58.8 -       92.1) 
+13.0       63.6 (      51.7 -       79.3) 
+14.0       56.2 (      46.1 -       69.3) 
+15.0       50.2 (      41.4 -       61.6) 
+16.0       45.2 (      37.6 -       55.3) 
+17.0       41.0 (      34.3 -       50.0) 
+18.0       37.5 (      31.5 -       45.6) 
+19.0       34.5 (      29.2 -       41.8) 
+20.0       31.9 (      27.1 -       38.6) 
+21.0       29.7 (      25.3 -       35.8) 
+22.0       27.7 (      23.8 -       33.4) 
+23.0       26.0 (      22.4 -       31.2) 
+24.0       24.4 (      21.1 -       29.3) 
+25.0       23.1 (      20.0 -       27.6) 
+26.0       21.8 (      19.0 -       26.1) 
+27.0       20.7 (      18.1 -       24.8) 
+28.0       19.7 (      17.2 -       23.6) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000
+ECx with CIs: 95% pred. likelihood, parspace explorer
+================================================================================
+time (days)    EC50 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0   3.68e+03 (  1.93e+03 -   1.35e+04) 
+2.0       854. (      519. -   2.13e+03) 
+3.0       389. (      253. -       781.) 
+4.0       230. (      156. -       400.) 
+5.0       155. (      109. -       246.) 
+6.0       114. (      82.4 -       172.) 
+7.0       89.3 (      65.8 -       131.) 
+8.0       72.6 (      54.5 -       104.) 
+9.0       60.8 (      46.5 -       85.9) 
+10.0       52.2 (      40.5 -       72.8) 
+11.0       45.7 (      35.9 -       63.0) 
+12.0       40.7 (      32.1 -       55.3) 
+13.0       36.6 (      29.0 -       49.3) 
+14.0       33.4 (      26.5 -       44.4) 
+15.0       30.7 (      24.4 -       40.4) 
+16.0       28.4 (      22.7 -       37.1) 
+17.0       26.5 (      21.2 -       34.3) 
+18.0       24.9 (      20.0 -       31.9) 
+19.0       23.4 (      18.9 -       29.8) 
+20.0       22.2 (      17.9 -       28.1) 
+21.0       21.1 (      17.1 -       26.5) 
+22.0       20.2 (      16.3 -       25.1) 
+23.0       19.3 (      15.6 -       23.9) 
+24.0       18.6 (      15.0 -       22.9) 
+25.0       17.9 (      14.4 -       22.1) 
+26.0       17.3 (      13.8 -       21.3) 
+27.0       16.7 (      13.4 -       20.6) 
+28.0       16.2 (      12.9 -       20.0) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000
+ECx with CIs: 95% pred. likelihood, parspace explorer
+================================================================================
+time (days)    EC10 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0       686. (      399. -   2.36e+03) 
+2.0       185. (      132. -       414.) 
+3.0       94.8 (      73.0 -       166.) 
+4.0       61.5 (      48.3 -       91.7) 
+5.0       45.1 (      35.8 -       60.4) 
+6.0       35.5 (      28.2 -       45.1) 
+7.0       29.4 (      23.3 -       35.9) 
+8.0       25.2 (      19.9 -       30.3) 
+9.0       22.1 (      17.3 -       26.5) 
+10.0       19.8 (      15.4 -       23.8) 
+11.0       18.0 (      14.0 -       21.7) 
+12.0       16.6 (      12.8 -       20.1) 
+13.0       15.5 (      11.8 -       18.7) 
+14.0       14.5 (      11.1 -       17.7) 
+15.0       13.7 (      10.4 -       16.7) 
+16.0       13.0 (      9.88 -       16.0) 
+17.0       12.5 (      9.40 -       15.3) 
+18.0       12.0 (      8.94 -       14.7) 
+19.0       11.5 (      8.54 -       14.2) 
+20.0       11.2 (      8.20 -       13.8) 
+21.0       10.8 (      7.89 -       13.4) 
+22.0       10.5 (      7.62 -       13.1) 
+23.0       10.3 (      7.38 -       12.8) 
+24.0       10.0 (      7.17 -       12.5) 
+25.0       9.82 (      6.98 -       12.2) 
+26.0       9.63 (      6.80 -       12.0) 
+27.0       9.46 (      6.65 -       11.9) 
+28.0       9.30 (      6.50 -       11.7) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000
+ECx with CIs: 95% pred. likelihood, parspace explorer
+================================================================================
+time (days)    EC10 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0       522. (      313. -   1.69e+03) 
+2.0       153. (      111. -       316.) 
+3.0       81.9 (      62.7 -       133.) 
+4.0       54.8 (      42.3 -       76.3) 
+5.0       41.2 (      31.8 -       53.6) 
+6.0       33.1 (      25.5 -       41.4) 
+7.0       27.9 (      21.4 -       34.0) 
+8.0       24.3 (      18.6 -       29.6) 
+9.0       21.6 (      16.5 -       26.4) 
+10.0       19.6 (      14.9 -       24.0) 
+11.0       18.1 (      13.6 -       22.1) 
+12.0       16.9 (      12.7 -       20.7) 
+13.0       15.8 (      11.9 -       19.5) 
+14.0       15.0 (      11.2 -       18.6) 
+15.0       14.3 (      10.6 -       17.8) 
+16.0       13.7 (      10.1 -       17.1) 
+17.0       13.2 (      9.64 -       16.5) 
+18.0       12.8 (      9.25 -       16.0) 
+19.0       12.4 (      8.91 -       15.5) 
+20.0       12.1 (      8.61 -       15.2) 
+21.0       11.8 (      8.35 -       14.8) 
+22.0       11.6 (      8.12 -       14.5) 
+23.0       11.3 (      7.91 -       14.3) 
+24.0       11.1 (      7.72 -       14.1) 
+25.0       11.0 (      7.56 -       13.9) 
+26.0       10.8 (      7.41 -       13.7) 
+27.0       10.7 (      7.28 -       13.5) 
+28.0       10.5 (      7.15 -       13.4) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000
+ECx with CIs: 95% pred. likelihood, parspace explorer
+================================================================================
+time (days)    EC50 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0   2.66e+03 (  1.36e+03 -   9.44e+03) 
+2.0       653. (      385. -   1.56e+03) 
+3.0       307. (      194. -       592.) 
+4.0       185. (      123. -       315.) 
+5.0       128. (      87.9 -       207.) 
+6.0       96.0 (      67.9 -       150.) 
+7.0       76.1 (      55.2 -       115.) 
+8.0       62.8 (      46.6 -       93.4) 
+9.0       53.4 (      40.3 -       78.1) 
+10.0       46.4 (      35.5 -       66.8) 
+11.0       41.2 (      31.6 -       58.3) 
+12.0       37.0 (      28.6 -       51.7) 
+13.0       33.7 (      26.2 -       46.5) 
+14.0       31.0 (      24.2 -       42.2) 
+15.0       28.8 (      22.5 -       38.7) 
+16.0       26.9 (      21.2 -       35.8) 
+17.0       25.3 (      20.0 -       33.3) 
+18.0       23.9 (      18.9 -       31.2) 
+19.0       22.7 (      17.9 -       29.4) 
+20.0       21.7 (      17.1 -       27.8) 
+21.0       20.8 (      16.3 -       26.4) 
+22.0       20.0 (      15.6 -       25.1) 
+23.0       19.3 (      15.1 -       24.2) 
+24.0       18.7 (      14.5 -       23.3) 
+25.0       18.1 (      14.0 -       22.6) 
+26.0       17.6 (      13.6 -       21.9) 
+27.0       17.1 (      13.2 -       21.3) 
+28.0       16.7 (      12.9 -       20.7) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000
+ECx with CIs: 95% pred. likelihood, parspace explorer
+================================================================================
+time (days)    EC50 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0   1.50e+03 (      731. -   4.84e+03) 
+2.0       409. (      229. -       916.) 
+3.0       205. (      124. -       409.) 
+4.0       131. (      83.7 -       242.) 
+5.0       94.5 (      63.1 -       165.) 
+6.0       73.7 (      51.0 -       124.) 
+7.0       60.6 (      43.2 -       98.1) 
+8.0       51.7 (      37.8 -       81.2) 
+9.0       45.3 (      33.6 -       69.2) 
+10.0       40.5 (      30.4 -       60.5) 
+11.0       36.8 (      27.8 -       53.9) 
+12.0       33.9 (      25.7 -       48.7) 
+13.0       31.6 (      23.9 -       44.5) 
+14.0       29.7 (      22.4 -       41.2) 
+15.0       28.1 (      21.1 -       38.4) 
+16.0       26.8 (      20.1 -       36.0) 
+17.0       25.6 (      19.2 -       34.1) 
+18.0       24.6 (      18.4 -       32.6) 
+19.0       23.8 (      17.7 -       31.3) 
+20.0       23.0 (      17.1 -       30.1) 
+21.0       22.4 (      16.6 -       29.1) 
+22.0       21.8 (      16.2 -       28.2) 
+23.0       21.3 (      15.8 -       27.4) 
+24.0       20.8 (      15.4 -       26.7) 
+25.0       20.4 (      15.1 -       26.1) 
+26.0       20.0 (      14.8 -       25.5) 
+27.0       19.7 (      14.5 -       25.0) 
+28.0       19.3 (      14.2 -       24.5) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000
+ECx with CIs: 95% pred. likelihood, parspace explorer
+================================================================================
+time (days)    EC10 (95 perc. CI)    (ug/L)
+================================================================================
+  Survival    :
+1.0       336. (      211. -       927.) 
+2.0       114. (      83.1 -       199.) 
+3.0       66.5 (      48.9 -       99.6) 
+4.0       47.4 (      34.9 -       65.0) 
+5.0       37.4 (      27.5 -       48.3) 
+6.0       31.4 (      23.1 -       39.5) 
+7.0       27.4 (      20.2 -       34.4) 
+8.0       24.7 (      18.1 -       30.9) 
+9.0       22.6 (      16.5 -       28.3) 
+10.0       21.1 (      15.3 -       26.4) 
+11.0       19.9 (      14.4 -       25.0) 
+12.0       19.0 (      13.7 -       23.9) 
+13.0       18.2 (      12.9 -       23.0) 
+14.0       17.6 (      12.4 -       22.2) 
+15.0       17.1 (      11.9 -       21.6) 
+16.0       16.6 (      11.5 -       21.1) 
+17.0       16.3 (      11.1 -       20.7) 
+18.0       16.0 (      10.9 -       20.3) 
+19.0       15.7 (      10.6 -       20.0) 
+20.0       15.4 (      10.4 -       19.8) 
+21.0       15.2 (      10.2 -       19.6) 
+22.0       15.1 (      10.0 -       19.4) 
+23.0       14.9 (      9.86 -       19.2) 
+24.0       14.8 (      9.72 -       19.1) 
+25.0       14.6 (      9.60 -       19.0) 
+26.0       14.5 (      9.49 -       18.9) 
+27.0       14.4 (      9.39 -       18.8) 
+28.0       14.3 (      9.30 -       18.7) 
+================================================================================
+Boundaries used as min-max: 1e-07 - 1000000

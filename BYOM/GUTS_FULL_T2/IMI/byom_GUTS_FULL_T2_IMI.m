@@ -143,8 +143,8 @@ glo.wts = [1 1 0
            1 1 0];  % set zero weight to fake data for scaled damage
 
 % Experimental temperatures for each scenario
-glo.Temp_scen = [  0      1      2      3      4      5      6      7      8      9     10     11     12     13     14     15     16     17 
-                 280.15 280.15 280.15 280.15 280.15 280.15 284.15 284.15 284.15 284.15 284.15 284.15 288.15 288.15 288.15 288.15 288.15 288.15 ];    
+glo.Temp_scen = [  0      1      2      3      4      5      6      7      8      9     10     11     12     13     14     15     16     17    18     19     20
+                 280.15 280.15 280.15 280.15 280.15 280.15 284.15 284.15 284.15 284.15 284.15 284.15 288.15 288.15 288.15 288.15 288.15 288.15 291.15 293.15 297.15];    
 
 
 % Create a table with nicer labels for the legends
@@ -194,11 +194,11 @@ par.T_A_tk = [3044     0 0.01 2e4 1];  % Arrhenius temperature, Kelvin
 % par.Fs     = [42.99  0  1     100  1]; % fraction spread of threshold distribution (-) (IT and mixed)
 % par.T_A_td = [8510   1  1000  2e4  1]; % Arrhenius temperature for TD parameter, Kelvin
 % TD parameter starts for IT
-par.kr     = [0.001    1 1e-6 1   0]; % damage repair rate constant (d-1)
+par.kr     = [0.001    1 1e-3 1   0]; % damage repair rate constant (d-1)
 par.mi     = [3.436    1 0.01 1e3 0]; % median threshold for survival (nmol/kg)
-par.hb     = [0.01095  1 1e-6 1   0]; % background hazard rate (d-1)
+par.hb     = [0.01095  1 1e-3 1   0]; % background hazard rate (d-1)
 par.bi     = [2e-3     1 1e-6 1   0]; % killing rate (kg/nmol/d) (SD and mixed)
-par.Fs     = [40.95    1    1 1e6 1]; % fraction spread of threshold distribution (-) (IT and mixed)
+par.Fs     = [40.95    1    1 1e3 1]; % fraction spread of threshold distribution (-) (IT and mixed)
 par.T_A_td = [12150    1 1000 2e4 1]; % Arrhenius temperature for TD parameter, Kelvin
 
 switch glo.sel % make sure that right parameters are fitted
@@ -230,80 +230,84 @@ prelim_checks % script to perform some preliminary checks and set things up
 % Note: prelim_checks also fills all the options (opt_...) with defauls, so
 % modify options after this call, if needed.
 
-%% Calculations and plotting
-% Here, the functions are called that will do the calculation and the
-% plotting. 
-% 
-% Options for the plotting can be set using opt_plot (see prelim_checks.m).
-% Options for the optimsation routine can be set using opt_optim. Options
-% for the ODE solver are part of the global glo. For the demo, the
-% iterations were turned off (opt_optim.it = 0).
-
-opt_optim.type = 4; % optimisation method 1) simplex, 4) parameter-space explorer
-opt_optim.fit  = 1; % fit the parameters (1), or don't (0)
-opt_optim.it   = 0; % show iterations of the optimisation (1, default) or not (0)
-glo.useode     = 1; % calculate model using ODE solver (1) or analytical solution (0)
-
-opt_optim.ps_plots = 0; % when set to 1, makes intermediate plots to monitor progress of parameter-space explorer
-opt_optim.ps_profs = 1; % when set to 1, makes profiles and additional sampling for parameter-space explorer
-opt_optim.ps_rough = 1; % set to 1 for rough settings of parameter-space explorer, 0 for settings as in openGUTS
-opt_optim.ps_saved = 0; % use saved set for parameter-space explorer (1) or not (0);
-
-% optimise and plot (fitted parameters in par_out)
-par_out = calc_optim(par,opt_optim); % start the optimisation
-% no plotting here; we'll immediately plot with CIs below
-
-%% Plot results with confidence intervals
-% The following code can be used to make a standard plot (the same as for
-% the fits), but with confidence intervals. Options for confidence bounds
-% on model curves can be set using opt_conf (see prelim_checks).
-% 
-% Use opt_conf.type to tell calc_conf which sample to use: 
-% -1) Skips CIs (zero does the same, and an empty opt_conf as well).
-% 1) Bayesian MCMC sample (default); CI on predictions are 95% ranges on 
-% the model curves from the sample 
-% 2) parameter sets from a joint likelihood region using the shooting 
-% method (limited sets can be used), which will yield (asymptotically) 95% 
-% CIs on predictions
-% 3) as option 2, but using the parameter-space explorer
-
-opt_conf.type    = 3; % make intervals from 1) slice sampler, 2) likelihood region shooting, 3) parspace explorer
-opt_conf.lim_set = 0; % use limited set of n_lim points (1) or outer hull (2, likelihood methods only) to create CIs
-opt_conf.sens    = 0; % type of analysis 0) no sensitivities 1) corr. with state, 2) corr. with state/control, 3) corr. with relative change of state over time
-
-out_conf = calc_conf(par_out,opt_conf);   % calculate confidence intervals on model curves
-calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to plot fits with CIs
-
-%% TKTD plots
-opt_tktd.repls = 0;     % plot individual replicates (1) or means (0)
-opt_tktd.min   = 0;     % set to 1 to show a dotted line for the control (lowest) treatment
-
-plot_tktd(par_out,opt_tktd,opt_conf);
-
-
-% %% Calculate LCx versus time
-% % Here, the LCx (by default the LC50) is calculated at several time points.
-% % LCx values are also printed on screen. If a sample from parameter space
-% % is available (e.g., from the slice sampler or the likelihood region), it
-% % can be used to calculate confidence bounds. 
+% %% Calculations and plotting
+% % Here, the functions are called that will do the calculation and the
+% % plotting. 
 % % 
-% % Options for LCx (with confidence bounds) can be set using opt_ecx (see
-% % prelim_checks). Note that opt_conf.type=-1 skips CIs.
+% % Options for the plotting can be set using opt_plot (see prelim_checks.m).
+% % Options for the optimsation routine can be set using opt_optim. Options
+% % for the ODE solver are part of the global glo. For the demo, the
+% % iterations were turned off (opt_optim.it = 0).
 % 
-% opt_conf.type    = 2; % make intervals from 1) slice sampler, 2)likelihood region, 3) parspace explorer
-% opt_conf.lim_set = 2; % for lik-region sample: use limited set of n_lim points (1) or outer hull (2) to create CIs
+% opt_optim.type = 4; % optimisation method 1) simplex, 4) parameter-space explorer
+% opt_optim.fit  = 1; % fit the parameters (1), or don't (0)
+% opt_optim.it   = 0; % show iterations of the optimisation (1, default) or not (0)
+% glo.useode     = 1; % calculate model using ODE solver (1) or analytical solution (0)
 % 
-% opt_ecx.id_sel    = [0   0 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
-% % opt_ecx.id_sel    = [6   6 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
-% % opt_ecx.id_sel    = [12 12 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+% opt_optim.ps_plots = 0; % when set to 1, makes intermediate plots to monitor progress of parameter-space explorer
+% opt_optim.ps_profs = 1; % when set to 1, makes profiles and additional sampling for parameter-space explorer
+% opt_optim.ps_rough = 1; % set to 1 for rough settings of parameter-space explorer, 0 for settings as in openGUTS
+% opt_optim.ps_saved = 0; % use saved set for parameter-space explorer (1) or not (0);
 % 
-% % This is the general method as the fast methods won't work for the full
-% % model (or at least: won't be faster than the general method).
-% opt_ecx.Feff      = [0.50]; % effect levels (>0 en <1), x/100 in ECx
-% opt_ecx.notitle   = 1; % set to 1 to suppress titles above ECx plots
-% Tend = [1:28]; % times at which to calculate LCx, relative to control
+% % optimise and plot (fitted parameters in par_out)
+% par_out = calc_optim(par,opt_optim); % start the optimisation
+% % no plotting here; we'll immediately plot with CIs below
+
+% %% Plot results with confidence intervals
+% % The following code can be used to make a standard plot (the same as for
+% % the fits), but with confidence intervals. Options for confidence bounds
+% % on model curves can be set using opt_conf (see prelim_checks).
+% % 
+% % Use opt_conf.type to tell calc_conf which sample to use: 
+% % -1) Skips CIs (zero does the same, and an empty opt_conf as well).
+% % 1) Bayesian MCMC sample (default); CI on predictions are 95% ranges on 
+% % the model curves from the sample 
+% % 2) parameter sets from a joint likelihood region using the shooting 
+% % method (limited sets can be used), which will yield (asymptotically) 95% 
+% % CIs on predictions
+% % 3) as option 2, but using the parameter-space explorer
 % 
-% calc_ecx([],Tend,opt_ecx,opt_conf); % general method for ECx values
+% opt_conf.type    = 3; % make intervals from 1) slice sampler, 2) likelihood region shooting, 3) parspace explorer
+% opt_conf.lim_set = 0; % use limited set of n_lim points (1) or outer hull (2, likelihood methods only) to create CIs
+% opt_conf.sens    = 0; % type of analysis 0) no sensitivities 1) corr. with state, 2) corr. with state/control, 3) corr. with relative change of state over time
+% 
+% out_conf = calc_conf(par_out,opt_conf);   % calculate confidence intervals on model curves
+% calc_and_plot(par_out,opt_plot,out_conf); % call the plotting routine again to plot fits with CIs
+% 
+% %% TKTD plots
+% opt_tktd.repls = 0;     % plot individual replicates (1) or means (0)
+% opt_tktd.min   = 0;     % set to 1 to show a dotted line for the control (lowest) treatment
+% 
+% plot_tktd(par_out,opt_tktd,opt_conf);
+
+
+%% Calculate LCx versus time
+% Here, the LCx (by default the LC50) is calculated at several time points.
+% LCx values are also printed on screen. If a sample from parameter space
+% is available (e.g., from the slice sampler or the likelihood region), it
+% can be used to calculate confidence bounds. 
+% 
+% Options for LCx (with confidence bounds) can be set using opt_ecx (see
+% prelim_checks). Note that opt_conf.type=-1 skips CIs.
+
+opt_conf.type    = 3; % make intervals from 1) slice sampler, 2)likelihood region, 3) parspace explorer
+opt_conf.lim_set = 2; % for lik-region sample: use limited set of n_lim points (1) or outer hull (2) to create CIs
+
+%opt_ecx.id_sel    = [0   0 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+%opt_ecx.id_sel    = [6   6 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+%opt_ecx.id_sel    = [12 12 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations
+%opt_ecx.id_sel    = [18 18 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations, here 18 degrees prediction
+%opt_ecx.id_sel    = [19 19 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations, here 20 degrees prediction
+opt_ecx.id_sel    = [20 20 1]; % scenario to use from X0mat, scenario identifier, flag for ECx to use scenarios rather than concentrations, here 24 degrees prediction
+
+
+% This is the general method as the fast methods won't work for the full
+% model (or at least: won't be faster than the general method).
+opt_ecx.Feff      = [0.50]; % effect levels (>0 en <1), x/100 in ECx
+opt_ecx.notitle   = 1; % set to 1 to suppress titles above ECx plots
+Tend = [1:28]; % times at which to calculate LCx, relative to control
+
+calc_ecx([],Tend,opt_ecx,opt_conf); % general method for ECx values
 
 
 %% Other CI options
