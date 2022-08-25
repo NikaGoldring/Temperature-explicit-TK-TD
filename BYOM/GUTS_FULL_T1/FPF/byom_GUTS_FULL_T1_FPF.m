@@ -165,7 +165,7 @@ X0mat(4,:) = 0;           % initial scaled damage
 % Model parameters are part of a 'structure' for easy reference. 
 
 % global parameters for GUTS purposes
-glo.sel  = 2; % select death mechanism: 1) SD 2) IT 3) mixed
+glo.sel  = 1; % select death mechanism: 1) SD 2) IT 3) mixed
 glo.locS = 1 ; % location of survival probability in the state variable list
 glo.locC = 2; % location of internal concentration in the state variable list
 glo.locD = 3; % location of scaled damage in the state variable list
@@ -177,18 +177,18 @@ glo.fastrep = 0; % set to 1 to assume fast damage repair (death is driven by Ci)
 par.ku     = [1.313   0 1e-3  10 1];    % uptake rate constant, L/kg/d
 par.ke     = [0.1353  0 1e-3  10 1];    % elimination rate constant (d-1)
 par.T_A_tk = [9243    0 1000 20000 1];  % Arrhenius temperature for TK rates, Kelvin (startvalue from AmP = 10000) 
-% % TD parameter starts for SD
-% par.kr = [1.714     1 1e-6  1e3 0]; % damage repair rate constant (d-1)
-% par.mi = [69.03     1    0  1e3 1]; % median threshold for survival (nmol/kg)
-% par.hb = [0.003     1    0  10  1]; % background hazard rate (d-1)
-% par.bi = [0.0001396 1 1e-6  10  0]; % killing rate (kg/nmol/d) (SD and mixed)
-% par.Fs = [7.290     1    1  100 1]; % fraction spread of threshold distribution (-) (IT and mixed)
-% TD parameter starts for IT
-par.kr = [0.04525   1 1e-6 10  0]; % damage repair rate constant (d-1)
-par.mi = [161.4     1    0 1e3 1]; % median threshold for survival (nmol/kg)
-par.hb = [0.003     1    0 10  1]; % background hazard rate (d-1)
-par.bi = [0.0001816 1 1e-6 10  0]; % killing rate (kg/nmol/d) (SD and mixed)
-par.Fs = [7.290     1    1 100 1]; % fraction spread of threshold distribution (-) (IT and mixed)
+% TD parameter starts for SD
+par.kr = [1.714     1  0.01  1e3   0]; % damage repair rate constant (d-1)
+par.mi = [69.03     1  25    200   0]; % median threshold for survival (nmol/kg)
+par.hb = [0.003     1  1e-6  1     0]; % background hazard rate (d-1)
+par.bi = [0.0001396 1  1e-6  1     0]; % killing rate (kg/nmol/d) (SD and mixed)
+par.Fs = [7.290     0  1     100   1]; % fraction spread of threshold distribution (-) (IT and mixed)
+% % TD parameter starts for IT
+% par.kr = [0.04525   1 1e-6 10  0]; % damage repair rate constant (d-1)
+% par.mi = [161.4     1    0 1e3 1]; % median threshold for survival (nmol/kg)
+% par.hb = [0.003     1    0 10  1]; % background hazard rate (d-1)
+% par.bi = [0.0001816 1 1e-6 10  0]; % killing rate (kg/nmol/d) (SD and mixed)
+% par.Fs = [7.290     1    1 100 1]; % fraction spread of threshold distribution (-) (IT and mixed)
 
 
 switch glo.sel % make sure that right parameters are fitted
